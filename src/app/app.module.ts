@@ -25,6 +25,7 @@ import {
 import { environment } from '../environments/environment.prod';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AuthGuard } from './auth.guard';
     RegisterComponent,
     NotFoundComponent,
     NavbarComponent,
+    UserDetailsComponent,
   ],
   entryComponents: [
     LoginComponent,
@@ -57,10 +59,11 @@ import { AuthGuard } from './auth.guard';
     RouterModule.forRoot(<Routes>[
       {
         path: '',
-        component: HomeComponent      },
+        component: HomeComponent},
       {
-        path: 'register',
-        component: RegisterComponent
+        path: 'user/:id',
+        component: UserDetailsComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: '**',
@@ -69,7 +72,8 @@ import { AuthGuard } from './auth.guard';
     ])
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

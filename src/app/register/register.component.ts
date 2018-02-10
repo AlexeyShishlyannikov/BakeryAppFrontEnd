@@ -1,26 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterCredentials } from '../models/credentials';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
-
+export class RegisterComponent implements OnInit {
+  invalidCredentials: boolean;
+  currentRoute: UrlSegment[];
+  credentials: RegisterCredentials = {
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    street: '',
+    town: '',
+    zipCode: null
+  };
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
+    private route: ActivatedRoute
   ) { }
 
-  register(credentials: RegisterCredentials) {
-    this.authService.login(credentials)
+  ngOnInit() {
+    this.currentRoute = this.route.snapshot.url;
+  }
+  register() {
+    this.authService.register(this.credentials)
       .subscribe(result => {
-        if (result) {
-          this.router.navigate(['/']);
-        }
-      });
+        console.log(result);
+        result ? this.dialog.closeAll() : this.invalidCredentials = true;
+      },
+        err => {
+          this.invalidCredentials = true;
+        });
+  }
+  redirectToLogin() {
+    this.dialog.closeAll();
+    this.dialog.open(LoginComponent);
   }
 }

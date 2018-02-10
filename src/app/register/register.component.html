@@ -1,3 +1,116 @@
-<p>
-  register works!
-</p>
+<div class="container">
+  <h2>Register</h2>
+  <form class="form m-20 text-center" #f="ngForm" novalidate (ngSubmit)="register()">
+    <mat-form-field class="m-b-10">
+      <input
+      #emailInput="ngModel"
+      type="email"
+      name="email"
+      [(ngModel)]="credentials.email"
+      matInput
+      placeholder="Email"
+      email="true"
+      required>
+      <mat-error *ngIf="emailInput.invalid && emailInput.dirty">
+        Please enter a valid email address.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #passwordInput="ngModel"
+      type="password"
+      name="password"
+      [(ngModel)]="credentials.password"
+      matInput
+      placeholder="Password"
+      required>
+      <mat-error *ngIf="(passwordInput.errors && passwordInput.errors.required) && passwordInput.dirty">
+        Password should be at least 6 characters.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #firstNameInput="ngModel"
+      type="firstName"
+      name="firstName"
+      [(ngModel)]="credentials.firstName"
+      matInput
+      placeholder="First Name"
+      required>
+      <mat-error *ngIf="(firstNameInput.errors && firstNameInput.errors.required) && firstNameInput.dirty">
+        Please provide your first name.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #lastNameInput="ngModel"
+      type="lastName"
+      name="lastName"
+      [(ngModel)]="credentials.lastName"
+      matInput
+      placeholder="Last Name"
+      required>
+      <mat-error *ngIf="(lastNameInput.errors && lastNameInput.errors.required) && lastNameInput.dirty">
+        Please provide your last name.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #streetInput="ngModel"
+      type="street"
+      name="street"
+      [(ngModel)]="credentials.street"
+      matInput
+      placeholder="Street"
+      required>
+      <mat-error *ngIf="(streetInput.errors && streetInput.errors.required) && streetInput.dirty">
+        Please provide valid address.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #townInput="ngModel"
+      type="town"
+      name="town"
+      [(ngModel)]="credentials.town"
+      matInput
+      placeholder="Town"
+      pattern="^([^,]+),(\s)?([A-Z]{2})$"
+      required>
+      <mat-error *ngIf="(townInput.errors && ( townInput.errors.required || townInput.errors.pattern)) && townInput.dirty">
+        Please provide valid city.(e.g Chicago, IL)
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #zipCodeInput="ngModel"
+      type="zipCode"
+      name="zipCode"
+      [(ngModel)]="credentials.zipCode"
+      matInput
+      maxlength="5"
+      minlength="5"
+      placeholder="Postal Code"
+      required>
+      <mat-error *ngIf="(zipCodeInput.errors && (zipCodeInput.errors.minlength || zipCodeInput.errors.maxlength)) && zipCodeInput.dirty">
+        Please provide 5 digit postal code.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-error *ngIf="invalidCredentials">
+      This user is already in database.
+    </mat-error>
+    <p class="m-t-10 float-left">Login
+      <a [routerLink]="currentRoute" (click)="redirectToLogin()">here</a>.</p>
+      <br><br>
+    <div class="text-center">
+      <button mat-raised-button [disabled]="!f.valid">Register</button>
+    </div>
+  </form>
+</div>

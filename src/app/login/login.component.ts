@@ -1,24 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginCredentials } from '../models/credentials';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, UrlSegment } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { MatDialog } from '@angular/material';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   invalidLogin: boolean;
   credentials: LoginCredentials = {
     email: '',
     password: ''
   };
+  currentRoute: UrlSegment[];
   constructor(
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private route: ActivatedRoute
   ) { }
+
+  ngOnInit() {
+    this.currentRoute = this.route.snapshot.url;
+  }
 
   login() {
     this.authService.login(this.credentials)
@@ -28,5 +35,9 @@ export class LoginComponent {
         err => {
           this.invalidLogin = true;
         });
+  }
+  redirectToRegister() {
+    this.dialog.closeAll();
+    this.dialog.open(RegisterComponent);
   }
 }

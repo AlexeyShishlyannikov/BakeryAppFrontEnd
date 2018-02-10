@@ -1,4 +1,5 @@
 <div class="container">
+  <h2>Welcome back</h2>
   <form class="form m-20 text-center" #f="ngForm" novalidate (ngSubmit)="login()">
     <mat-form-field class="m-b-10">
       <input
@@ -31,7 +32,9 @@
     </mat-form-field>
     <br>
     <mat-error *ngIf="invalidLogin">Wrong email or password.</mat-error>
-    <div class="text-center m-t-10">
+    <p class="m-t-10 float-left">Register <a [routerLink]="currentRoute" (click)="redirectToRegister()">here</a>.</p>
+    <br><br>
+    <div class="text-center">
       <button mat-raised-button [disabled]="!f.valid">Login</button>
     </div>
   </form>
