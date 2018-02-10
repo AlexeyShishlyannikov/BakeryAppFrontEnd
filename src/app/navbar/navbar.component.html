@@ -1,11 +1,30 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="mat-elevation-z6">
-    <a routerLink="/" mat-button>
+    <button routerLink="/" mat-button>
       Home
-    </a>
-    <span class="example-spacer"></span>
-    <a routerLink="/login" mat-button>Login</a>
-    <a routerLink="/register" mat-button>Register</a>
+    </button>
+    <span class="spacer"></span>
+    <button
+    *ngIf="!authService.isLoggedIn()"
+    (click)="openLoginDialog()"
+    mat-button>Login</button>
+    <button
+    *ngIf="!authService.isLoggedIn()"
+    (click)="openRegisterDialog()"
+    mat-button>Register</button>
+    <button
+    *ngIf="authService.isLoggedIn()"
+    mat-button
+    [routerLink]="['/user/', authService.currentUserId]">
+    <span>
+      <mat-icon class="">account_circle</mat-icon>
+      {{ authService.currentUserEmail }}
+    </span>
+    </button>
+    <button
+    (click)="authService.logout()"
+    *ngIf="authService.isLoggedIn()"
+    mat-button>Logout</button>
   </mat-toolbar-row>
 </mat-toolbar>
 

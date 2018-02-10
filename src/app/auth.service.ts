@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment.prod';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { LoginCredentials, RegisterCredentials } from './models/credentials';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
@@ -12,19 +12,23 @@ export class AuthService {
   constructor(private http: Http) { }
 
   public login(credentials: LoginCredentials): Observable<boolean> {
-    return this.http.post(`${this.url}/login`, credentials)
+    const options = this.setOptions();
+    return this.http.post(`${this.url}/login`,
+    JSON.stringify(credentials),
+    options)
     .map(res => {
-      const result = res.json();
-      if ( result && result.token) {
-        localStorage.setItem('token', result.token);
-        return true;
-      }
-      return false;
+      return this.checkResultForToken(res);
     });
   }
 
-  public register(credentials: RegisterCredentials): Observable<string> {
-    return this.http.post(`${this.url}/register`, credentials).map(res => res.json());
+  public register(credentials: RegisterCredentials): Observable<boolean> {
+    const options = this.setOptions();
+    return this.http.post(`${this.url}/register`,
+    JSON.stringify(credentials),
+    options)
+    .map(res => {
+      return this.checkResultForToken(res);
+    });
   }
 
   public logout(): void {
@@ -32,19 +36,42 @@ export class AuthService {
   }
 
   public isLoggedIn(): boolean {
-    return tokenNotExpired();
+    return tokenNotExpired('token');
   }
 
   public isAdmin(): boolean {
-    const token = localStorage.getItem('token');
-    if (!token) { return false; }
-    const role = new JwtHelper().decodeToken(token)['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+    const token = this.decodeToken();
+    const role = token['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
     return role === 'Admin' ? true : false;
   }
 
-  get currentUser() {
+  get currentUserEmail() {
+    const token = this.decodeToken();
+    return token.sub;
+  }
+  get currentUserId() {
+    const token = this.decodeToken();
+    return token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+  }
+
+  private decodeToken() {
     const token = localStorage.getItem('token');
     if (!token) { return null; }
     return new JwtHelper().decodeToken(token);
+  }
+
+  private setOptions(): RequestOptions {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return new RequestOptions({ headers: headers });
+  }
+
+  private checkResultForToken(res): boolean {
+    const result = res.json();
+    if (result && result.token) {
+      localStorage.setItem('token', result.token);
+      return true;
+    }
+    return false;
   }
 }

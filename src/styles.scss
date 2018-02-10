@@ -1,12 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
-@import "../node_modules/bootstrap/dist/css/bootstrap-grid.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
 *{
   margin: 0;
 }
-
+button:focus {outline:0;}
+.center{
+  text-align: center;
+}
 // .text-center{
 //   text-align: center;
 // }
@@ -14,13 +17,24 @@
 //   float:right;
 //   right: -35px;
 // }
+mat-icon{
+  vertical-align: middle;
+}
 .navbar-spacing{
     margin-top: 64px;
     overflow-y: auto;
   }
-
 .m-20{
   margin: 20px 0;
+}
+.m-10{
+  margin: 10px;
+}
+.m-b-10{
+  margin-bottom: 10px;
+}
+.m-t-10{
+  margin-top: 10px;
 }
 // .image{
 //   background-size: cover;

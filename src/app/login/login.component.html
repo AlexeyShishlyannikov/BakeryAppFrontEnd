@@ -1,3 +1,38 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <form class="form m-20 text-center" #f="ngForm" novalidate (ngSubmit)="login()">
+    <mat-form-field class="m-b-10">
+      <input
+      #emailInput="ngModel"
+      type="email"
+      name="email"
+      [(ngModel)]="credentials.email"
+      matInput
+      placeholder="Email"
+      email="true"
+      required>
+      <mat-error *ngIf="emailInput.invalid && emailInput.dirty">
+        Please enter a valid email address.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #passwordInput="ngModel"
+      type="password"
+      name="password"
+      [(ngModel)]="credentials.password"
+      matInput
+      placeholder="Password"
+      minlength="6"
+      required>
+      <mat-error *ngIf="(passwordInput.errors && passwordInput.errors.minlength) && passwordInput.dirty">
+        Password should be at least 6 characters.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-error *ngIf="invalidLogin">Wrong email or password.</mat-error>
+    <div class="text-center m-t-10">
+      <button mat-raised-button [disabled]="!f.valid">Login</button>
+    </div>
+  </form>
+</div>

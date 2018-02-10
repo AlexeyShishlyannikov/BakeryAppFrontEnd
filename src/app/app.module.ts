@@ -17,9 +17,14 @@ import {
   MatIconModule,
   MatListModule,
   MatMenuModule,
-  MatCardModule
+  MatCardModule,
+  MatDialogModule,
+  MatInputModule,
+  MatFormFieldModule
 } from './../../node_modules/@angular/material';
 import { environment } from '../environments/environment.prod';
+import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -29,6 +34,10 @@ import { environment } from '../environments/environment.prod';
     RegisterComponent,
     NotFoundComponent,
     NavbarComponent,
+  ],
+  entryComponents: [
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,16 +49,15 @@ import { environment } from '../environments/environment.prod';
     MatListModule,
     MatMenuModule,
     MatCardModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
     BrowserAnimationsModule,
+    FormsModule,
     RouterModule.forRoot(<Routes>[
       {
         path: '',
-        component: HomeComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
+        component: HomeComponent      },
       {
         path: 'register',
         component: RegisterComponent
