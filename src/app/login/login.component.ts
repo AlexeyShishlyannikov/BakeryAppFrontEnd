@@ -36,8 +36,4 @@ export class LoginComponent implements OnInit{
           this.invalidLogin = true;
         });
   }
-  redirectToRegister() {
-    this.dialog.closeAll();
-    this.dialog.open(RegisterComponent);
-  }
 }

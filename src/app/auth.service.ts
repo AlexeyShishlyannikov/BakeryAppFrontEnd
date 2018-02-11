@@ -5,11 +5,15 @@ import { LoginCredentials, RegisterCredentials } from './models/credentials';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
   private url: string = environment.API_URL;
-  constructor(private http: Http) { }
+  constructor(
+    private http: Http,
+    private router: Router
+  ) { }
 
   public login(credentials: LoginCredentials): Observable<boolean> {
     const options = this.setOptions();
@@ -33,6 +37,7 @@ export class AuthService {
 
   public logout(): void {
     localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 
   public isLoggedIn(): boolean {
@@ -74,4 +79,5 @@ export class AuthService {
     }
     return false;
   }
+
 }

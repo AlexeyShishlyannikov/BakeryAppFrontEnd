@@ -33,7 +33,7 @@
     <mat-form-field class="m-b-10">
       <input
       #firstNameInput="ngModel"
-      type="firstName"
+      type="text"
       name="firstName"
       [(ngModel)]="credentials.firstName"
       matInput
@@ -47,7 +47,7 @@
     <mat-form-field class="m-b-10">
       <input
       #lastNameInput="ngModel"
-      type="lastName"
+      type="text"
       name="lastName"
       [(ngModel)]="credentials.lastName"
       matInput
@@ -61,7 +61,7 @@
     <mat-form-field class="m-b-10">
       <input
       #streetInput="ngModel"
-      type="street"
+      type="text"
       name="street"
       [(ngModel)]="credentials.street"
       matInput
@@ -75,7 +75,7 @@
     <mat-form-field class="m-b-10">
       <input
       #townInput="ngModel"
-      type="town"
+      type="text"
       name="town"
       [(ngModel)]="credentials.town"
       matInput
@@ -83,22 +83,22 @@
       pattern="^([^,]+),(\s)?([A-Z]{2})$"
       required>
       <mat-error *ngIf="(townInput.errors && ( townInput.errors.required || townInput.errors.pattern)) && townInput.dirty">
-        Please provide valid city.(e.g Chicago, IL)
+        Please provide valid city(e.g Chicago, IL).
       </mat-error>
     </mat-form-field>
     <br>
     <mat-form-field class="m-b-10">
       <input
       #zipCodeInput="ngModel"
-      type="zipCode"
+      type="number"
       name="zipCode"
       [(ngModel)]="credentials.zipCode"
       matInput
+      pattern="^([\d]{5})$"
       maxlength="5"
-      minlength="5"
       placeholder="Postal Code"
       required>
-      <mat-error *ngIf="(zipCodeInput.errors && (zipCodeInput.errors.minlength || zipCodeInput.errors.maxlength)) && zipCodeInput.dirty">
+      <mat-error *ngIf="(zipCodeInput.errors && zipCodeInput.errors.pattern) && zipCodeInput.dirty">
         Please provide 5 digit postal code.
       </mat-error>
     </mat-form-field>
@@ -106,9 +106,6 @@
     <mat-error *ngIf="invalidCredentials">
       This user is already in database.
     </mat-error>
-    <p class="m-t-10 float-left">Login
-      <a [routerLink]="currentRoute" (click)="redirectToLogin()">here</a>.</p>
-      <br><br>
     <div class="text-center">
       <button mat-raised-button [disabled]="!f.valid">Register</button>
     </div>
