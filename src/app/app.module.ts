@@ -20,7 +20,8 @@ import {
   MatCardModule,
   MatDialogModule,
   MatInputModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatGridListModule
 } from './../../node_modules/@angular/material';
 import { environment } from '../environments/environment.prod';
 import { FormsModule } from '@angular/forms';
@@ -29,6 +30,13 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { UserOrdersComponent } from './user-orders/user-orders.component';
 import { UserService } from './user.service';
+import { MenuListComponent } from './menu-list/menu-list.component';
+import { MenuListItemComponent } from './menu-list-item/menu-list-item.component';
+import { IngredientComponent } from './ingredient/ingredient.component';
+import { MenuService } from './menu.service';
+import { FaqService } from './faq.service';
+import { IngredientService } from './ingredient.service';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +49,10 @@ import { UserService } from './user.service';
     UserDetailsComponent,
     UserPanelComponent,
     UserOrdersComponent,
+    MenuListComponent,
+    MenuListItemComponent,
+    IngredientComponent,
+    ItemDetailsComponent,
   ],
   entryComponents: [
     LoginComponent,
@@ -59,16 +71,26 @@ import { UserService } from './user.service';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
+    MatGridListModule,
     BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(<Routes>[
       {
         path: '',
-        component: HomeComponent},
+        component: HomeComponent
+      },
       {
         path: 'user/:id',
         component: UserPanelComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'menu',
+        component: MenuListComponent
+      },
+      {
+        path: 'menu/:id',
+        component: ItemDetailsComponent
       },
       {
         path: '**',
@@ -79,7 +101,10 @@ import { UserService } from './user.service';
   providers: [
     AuthService,
     AuthGuard,
-    UserService
+    UserService,
+    MenuService,
+    FaqService,
+    IngredientService
   ],
   bootstrap: [AppComponent]
 })

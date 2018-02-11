@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class UserDetailsComponent implements OnInit, OnDestroy {
   @Input('userId') userId: string;
   user: User = {
-    id: '',
+    id: null,
     firstName: '',
     lastName: '',
     street: '',
@@ -21,7 +21,6 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
     email: '',
   };
   userSubscription: Subscription;
-  updateSubscription: Subscription;
   constructor(
     private userService: UserService
   ) { }
@@ -36,11 +35,10 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
-    this.updateSubscription.unsubscribe();
   }
 
   updateUser() {
-    this.updateSubscription = this.userService.updateUserDetails(this.userId, this.user)
+    this.userService.updateUserDetails(this.userId, this.user)
       .subscribe(user => {
         this.user = user;
       });

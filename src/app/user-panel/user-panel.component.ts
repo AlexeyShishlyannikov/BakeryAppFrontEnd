@@ -16,4 +16,8 @@ export class UserPanelComponent implements OnInit {
     this.userId = this.route.snapshot.paramMap.get('id');
   }
 
+  get matchMedia(): boolean {
+    const mq = window.matchMedia('(max-width: 576px)');
+    return mq.matches;
+  }
 }

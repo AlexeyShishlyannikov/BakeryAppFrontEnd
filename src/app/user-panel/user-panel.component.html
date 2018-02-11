@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row m-20">
-    <div class="col-sm-6">
+    <div class="col-sm-6" [class.order-2]="matchMedia">
       <app-user-details [userId]="userId"></app-user-details>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6" [class.order-1]="matchMedia">
       <app-user-orders [userId]="userId"></app-user-orders>
     </div>
   </div>

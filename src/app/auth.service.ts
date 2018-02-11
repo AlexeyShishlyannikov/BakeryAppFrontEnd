@@ -10,26 +10,27 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
   private url: string = environment.API_URL;
+  private options: RequestOptions;
   constructor(
     private http: Http,
     private router: Router
-  ) { }
+  ) {
+    this.options = this.setOptions();
+  }
 
   public login(credentials: LoginCredentials): Observable<boolean> {
-    const options = this.setOptions();
     return this.http.post(`${this.url}/login`,
     JSON.stringify(credentials),
-    options)
+    this.options)
     .map(res => {
       return this.checkResultForToken(res);
     });
   }
 
   public register(credentials: RegisterCredentials): Observable<boolean> {
-    const options = this.setOptions();
     return this.http.post(`${this.url}/register`,
     JSON.stringify(credentials),
-    options)
+    this.options)
     .map(res => {
       return this.checkResultForToken(res);
     });
@@ -65,9 +66,10 @@ export class AuthService {
     return new JwtHelper().decodeToken(token);
   }
 
-  private setOptions(): RequestOptions {
+  public setOptions(): RequestOptions {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'Bearer ' + this.token);
     return new RequestOptions({ headers: headers });
   }
 

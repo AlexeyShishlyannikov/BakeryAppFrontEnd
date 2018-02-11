@@ -40,11 +40,10 @@ mat-icon{
 .m-t-10{
   margin-top: 10px;
 }
-// .image{
-//   background-size: cover;
-//   background-position: center;
-//   min-height: 350px;
-// }
+.image{
+  background-size: cover;
+  background-position: center;
+}
 @media (max-width: 667px) {
   .navbar-spacing{
     margin-top: 56px;

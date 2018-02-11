@@ -11,5 +11,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  get matchMedia(): boolean {
+    const mq = window.matchMedia('(min-width: 1200px)');
+    return mq.matches;
+  }
 }

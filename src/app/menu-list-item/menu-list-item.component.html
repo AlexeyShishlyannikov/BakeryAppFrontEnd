@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h2>
+        {{ menuItem.name }}
+      </h2>
+    </mat-card-title>
+    <mat-card-subtitle>{{ menuItem.type }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{ photoData }}" alt="Photo">
+  <mat-card-content>
+    <p>
+      {{ menuItem.description }}
+    </p>
+    <p *ngIf="menuItem.type == 'Cake'" class="weight">
+      Minimum Weight: {{ minimumWeight }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button [routerLink]="[menuItem.id]">LEARN MORE</button>
+    <button mat-button>
+      <mat-icon>add_shopping_cart</mat-icon> ADD</button>
+    <span>
+      <mat-icon>attach_money</mat-icon>
+      <span class="price">{{ price }}</span>
+    </span>
+  </mat-card-actions>
+</mat-card>

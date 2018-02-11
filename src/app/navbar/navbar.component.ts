@@ -23,4 +23,9 @@ export class NavbarComponent {
   openRegisterDialog() {
     this.dialog.open(RegisterComponent);
   }
+
+  get matchMedia(): boolean {
+    const mq = window.matchMedia('(max-width: 576px)');
+    return mq.matches;
+  }
 }
