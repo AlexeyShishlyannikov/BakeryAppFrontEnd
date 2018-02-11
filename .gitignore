@@ -11,7 +11,7 @@
 
 #assets
 ./src/assets/*.jpeg
-/src/assets
+/src/assets/*.jpeg
 
 # IDEs and editors
 /.idea
