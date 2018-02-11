@@ -60,6 +60,22 @@
     <br>
     <mat-form-field class="m-b-10">
       <input
+      #phoneInput="ngModel"
+      type="number"
+      name="phone"
+      [(ngModel)]="credentials.phone"
+      matInput
+      pattern="^([\d]{10})$"
+      minlength="10"
+      placeholder="Phone Number"
+      required>
+      <mat-error *ngIf="(phoneInput.errors && phoneInput.errors.pattern) && phoneInput.dirty">
+        Enter 10 digit US phone number.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
       #streetInput="ngModel"
       type="text"
       name="street"

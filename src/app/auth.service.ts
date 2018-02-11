@@ -80,4 +80,9 @@ export class AuthService {
     return false;
   }
 
+  get token() {
+    const token = localStorage.getItem('token');
+    if (!token) { return null; }
+    return token;
+  }
 }

@@ -26,6 +26,9 @@ import { environment } from '../environments/environment.prod';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './auth.guard';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     NotFoundComponent,
     NavbarComponent,
     UserDetailsComponent,
+    UserPanelComponent,
+    UserOrdersComponent,
   ],
   entryComponents: [
     LoginComponent,
@@ -62,7 +67,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
         component: HomeComponent},
       {
         path: 'user/:id',
-        component: UserDetailsComponent,
+        component: UserPanelComponent,
         canActivate: [AuthGuard]
       },
       {
@@ -73,7 +78,8 @@ import { UserDetailsComponent } from './user-details/user-details.component';
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

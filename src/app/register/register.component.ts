@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
     lastName: '',
     street: '',
     town: '',
+    phone: '',
     zipCode: null
   };
   constructor(

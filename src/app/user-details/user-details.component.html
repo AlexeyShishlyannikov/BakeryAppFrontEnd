@@ -1,3 +1,106 @@
-<p>
-  user-details works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>
+        {{ user.firstName + ' ' + user.lastName }}
+      </h1>
+    </mat-card-title>
+    <mat-card-subtitle>Our favorite client</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="form m-20" #f="ngForm" novalidate (ngSubmit)="updateUser()">
+    <mat-form-field class="m-b-10">
+      <input
+      #firstNameInput="ngModel"
+      type="text"
+      name="firstName"
+      [(ngModel)]="user.firstName"
+      matInput
+      placeholder="First Name"
+      required>
+      <mat-error *ngIf="(firstNameInput.errors && firstNameInput.errors.required) && firstNameInput.dirty">
+        Please provide your first name.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #lastNameInput="ngModel"
+      type="text"
+      name="lastName"
+      [(ngModel)]="user.lastName"
+      matInput
+      placeholder="Last Name"
+      required>
+      <mat-error *ngIf="(lastNameInput.errors && lastNameInput.errors.required) && lastNameInput.dirty">
+        Please provide your last name.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #phoneInput="ngModel"
+      type="number"
+      name="phone"
+      [(ngModel)]="user.phone"
+      matInput
+      pattern="^([\d]{10})$"
+      minlength="10"
+      placeholder="Phone Number"
+      required>
+      <mat-error *ngIf="(phoneInput.errors && phoneInput.errors.pattern) && phoneInput.dirty">
+        Enter 10 digit US phone number.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #streetInput="ngModel"
+      type="text"
+      name="street"
+      [(ngModel)]="user.street"
+      matInput
+      placeholder="Street"
+      required>
+      <mat-error *ngIf="(streetInput.errors && streetInput.errors.required) && streetInput.dirty">
+        Please provide valid address.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #townInput="ngModel"
+      type="text"
+      name="town"
+      [(ngModel)]="user.town"
+      matInput
+      placeholder="Town"
+      pattern="^([^,]+),(\s)?([A-Z]{2})$"
+      required>
+      <mat-error *ngIf="(townInput.errors && ( townInput.errors.required || townInput.errors.pattern)) && townInput.dirty">
+        Please provide valid city(e.g Chicago, IL).
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="m-b-10">
+      <input
+      #zipCodeInput="ngModel"
+      type="number"
+      name="zipCode"
+      [(ngModel)]="user.zipCode"
+      matInput
+      pattern="^([\d]{5})$"
+      maxlength="5"
+      placeholder="Postal Code"
+      required>
+      <mat-error *ngIf="(zipCodeInput.errors && zipCodeInput.errors.pattern) && zipCodeInput.dirty">
+        Please provide 5 digit postal code.
+      </mat-error>
+    </mat-form-field>
+    <br>
+    <div class="text-center">
+      <button mat-raised-button [disabled]="!f.valid">Submit</button>
+    </div>
+  </form>
+  </mat-card-content>
+</mat-card>

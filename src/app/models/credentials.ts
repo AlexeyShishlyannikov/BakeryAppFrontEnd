@@ -8,5 +8,6 @@ export class RegisterCredentials extends LoginCredentials {
   lastName: string;
   street: string;
   town: string;
+  phone: string;
   zipCode: number;
 }
