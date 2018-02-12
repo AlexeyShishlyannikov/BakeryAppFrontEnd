@@ -4,7 +4,7 @@ import { environment } from '../environments/environment';
 import { AuthService } from './auth.service';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs/Observable';
-import { MenuItem } from './models/MenuItem';
+import { MenuItem } from './models/menuItem';
 import { MenuItemSave } from './models/MenuItemSave';
 
 @Injectable()

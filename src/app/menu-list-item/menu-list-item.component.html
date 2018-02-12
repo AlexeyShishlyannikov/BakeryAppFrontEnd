@@ -13,7 +13,7 @@
       {{ menuItem.description }}
     </p>
     <p *ngIf="menuItem.type == 'Cake'" class="weight">
-      Minimum Weight: {{ this.menuItem.getMinimumWeight(isMetric) }}
+      Minimum Weight: {{ menuItemService.getMinimumWeight(menuItem, isMetric) }}
     </p>
   </mat-card-content>
   <mat-card-actions>
@@ -24,9 +24,9 @@
       <mat-icon>attach_money</mat-icon>
       <span
       class="price"
-      matTooltip="{{ this.menuItem.getMinimalPrice() }}"
+      matTooltip="{{ menuItemService.getMinimalPrice(menuItem) }}"
       [matTooltipPosition]="'below'">
-      {{ this.menuItem.getPrice(isMetric) }}
+      {{ menuItemService.getPrice(menuItem, isMetric) }}
       </span>
     </span>
   </mat-card-actions>

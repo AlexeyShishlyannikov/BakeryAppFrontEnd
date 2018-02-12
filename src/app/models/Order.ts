@@ -1,5 +1,5 @@
 import { User } from './User';
-import { MenuItem } from './MenuItem';
+import { MenuItem } from './menuItem';
 export interface Order {
   id: number;
   clientId: number;

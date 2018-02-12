@@ -43,6 +43,7 @@ import { MenuSwitchWeightComponent } from './menu-switch-weight/menu-switch-weig
 import { ItemIngredientComponent } from './item-ingredient/item-ingredient.component';
 import { PhotoCarouselComponent } from './photo-carousel/photo-carousel.component';
 import { MenuItem } from './models/menuItem';
+import { MenuItemService } from './menu-item.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { MenuItem } from './models/menuItem';
     MenuFilterComponent,
     MenuSwitchWeightComponent,
     ItemIngredientComponent,
-    PhotoCarouselComponent,
+    PhotoCarouselComponent
   ],
   entryComponents: [
     LoginComponent,
@@ -115,7 +116,8 @@ import { MenuItem } from './models/menuItem';
     UserService,
     MenuService,
     FaqService,
-    IngredientService
+    IngredientService,
+    MenuItemService
   ],
   bootstrap: [AppComponent]
 })

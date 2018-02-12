@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MenuItem } from '../models/MenuItem';
+import { MenuItem } from '../models/menuItem';
 import { Subscription } from 'rxjs/Subscription';
 import { MenuService } from '../menu.service';
 import 'rxjs/add/operator/switchMap';
