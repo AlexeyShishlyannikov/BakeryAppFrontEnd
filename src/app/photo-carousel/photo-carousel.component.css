@@ -1,0 +1,35 @@
+.small-image{
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+}
+.small-margin{
+  margin-top: -16px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 0;
+}
+.image-container{
+  width: calc(100% + 48px);
+  margin: -24px -24px 0px -24px;
+  padding: 0;
+}
+.image-container .outer {
+  width: 100%;
+  padding-top: 56.25%; /* defines aspect ratio 16:9 */
+  position: relative;
+}
+.image-container .outer .fix-height{
+  /* height: 520px; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  object-position: center;
+  overflow: hidden;
+}
+.overflow{
+  overflow-x: auto;
+}

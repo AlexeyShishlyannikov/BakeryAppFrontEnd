@@ -1,0 +1,12 @@
+<button
+  mat-raised-button
+  [color]="!selected ? 'primary': ''"
+  (click)="switchWeight(false)">
+    Pounds
+</button>
+<button
+  mat-raised-button
+  [color]="selected ? 'primary': ''"
+  (click)="switchWeight(true)">
+    Kilograms
+</button>

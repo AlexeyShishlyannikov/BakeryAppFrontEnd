@@ -1,0 +1,8 @@
+<button
+  *ngFor="let type of types"
+  mat-raised-button
+  [color]="selected === type ? 'primary': ''"
+  (click)="outputFilter(type)">
+     {{type}}
+</button>
+

@@ -1,23 +1,22 @@
-<div class="container">
+<div class="">
   <div class="text-center m-20">
-    <button
-    mat-raised-button
-    [color]="!isMetric ? 'primary': ''"
-    (click)="isMetric = !isMetric">
-      Pounds
-  </button>
-    <button
-    mat-raised-button
-    [color]="isMetric ? 'primary': ''"
-    (click)="isMetric = !isMetric">
-      Kilograms
-    </button>
+    <app-menu-filter (selectedType)="filterMenu($event)"></app-menu-filter>
   </div>
-  <div class="row">
-    <div
-    *ngFor="let item of menu; let i = index"
-    class="col-sm-6 col-xs-12 m-20">
-      <app-menu-list-item [menuItem]="item" [isMetric]="isMetric"></app-menu-list-item>
+  <div class="text-center m-20">
+    <app-menu-switch-weight (isMetric)="switchWeight($event)">
+
+    </app-menu-switch-weight>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div
+        *ngFor="let item of menuFiltered"
+        class="col-sm-6 col-xs-12 m-20">
+        <app-menu-list-item
+          [menuItem]="item"
+          [isMetric]="isMetric">
+        </app-menu-list-item>
+      </div>
     </div>
   </div>
 </div>

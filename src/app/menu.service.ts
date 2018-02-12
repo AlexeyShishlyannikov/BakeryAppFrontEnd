@@ -4,7 +4,8 @@ import { environment } from '../environments/environment';
 import { AuthService } from './auth.service';
 import { DataService } from './data.service';
 import { Observable } from 'rxjs/Observable';
-import { MenuItem, MenuItemSave } from './models/MenuItem';
+import { MenuItem } from './models/MenuItem';
+import { MenuItemSave } from './models/MenuItemSave';
 
 @Injectable()
 export class MenuService extends DataService {

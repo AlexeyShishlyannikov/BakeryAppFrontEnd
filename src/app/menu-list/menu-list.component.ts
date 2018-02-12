@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class MenuListComponent implements OnInit, OnDestroy {
   menu: MenuItem[] = [];
+  menuFiltered: MenuItem[];
   isMetric = false;
   subscription: Subscription;
   constructor(
@@ -20,15 +21,28 @@ export class MenuListComponent implements OnInit, OnDestroy {
     this.populateMenu();
   }
 
+  public switchWeight(isMetric: boolean) {
+    this.isMetric = isMetric;
+  }
+
   private populateMenu() {
     this.subscription = this.menuService
       .getMenu()
       .subscribe(menu => {
-        this.menu = menu;
+        this.menu = this.menuFiltered = menu;
       },
         err => {
           console.log(err);
         });
+  }
+
+  private filterMenu(filterType: string) {
+    if (filterType === 'All') {
+      this.menuFiltered = this.menu;
+    } else {
+      this.menuFiltered = this.menu
+        .filter(item => item.type === filterType);
+    }
   }
 
   ngOnDestroy() {

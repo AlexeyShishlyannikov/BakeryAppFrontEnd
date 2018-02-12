@@ -37,6 +37,12 @@ import { MenuService } from './menu.service';
 import { FaqService } from './faq.service';
 import { IngredientService } from './ingredient.service';
 import { ItemDetailsComponent } from './item-details/item-details.component';
+import { MenuFilterComponent } from './menu-filter/menu-filter.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MenuSwitchWeightComponent } from './menu-switch-weight/menu-switch-weight.component';
+import { ItemIngredientComponent } from './item-ingredient/item-ingredient.component';
+import { PhotoCarouselComponent } from './photo-carousel/photo-carousel.component';
+import { MenuItem } from './models/menuItem';
 
 @NgModule({
   declarations: [
@@ -53,6 +59,10 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
     MenuListItemComponent,
     IngredientComponent,
     ItemDetailsComponent,
+    MenuFilterComponent,
+    MenuSwitchWeightComponent,
+    ItemIngredientComponent,
+    PhotoCarouselComponent,
   ],
   entryComponents: [
     LoginComponent,
@@ -72,6 +82,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
     MatInputModule,
     MatFormFieldModule,
     MatGridListModule,
+    MatTooltipModule,
     BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(<Routes>[
