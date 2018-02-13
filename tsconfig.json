@@ -14,6 +14,30 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "shared/*": [
+        "app/shared/*"
+      ],
+      "admin/*": [
+        "app/admin/*"
+      ],
+      "auth/*": [
+        "app/auth/*"
+      ],
+      "faq/*": [
+        "app/faq/*"
+      ],
+      "item/*": [
+        "app/item/*"
+      ],
+      "menu/*": [
+        "app/menu/*"
+      ],
+      "user/*": [
+        "app/user/*"
+      ]
+    }
   }
 }
