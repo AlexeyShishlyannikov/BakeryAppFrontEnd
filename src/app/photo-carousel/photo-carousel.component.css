@@ -33,3 +33,24 @@
 .overflow{
   overflow-x: auto;
 }
+.icon{
+  position: absolute;
+  top: 45%;
+  color: #fff;
+  font-size: 300%;
+  cursor: pointer;
+  text-shadow: 2px 2px #1f050591;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.left{
+  left: 5%;
+}
+.right{
+  right: 5%;
+}

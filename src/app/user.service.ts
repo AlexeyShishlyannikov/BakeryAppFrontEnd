@@ -16,8 +16,8 @@ export class UserService {
     this.options = this.authService.setOptions();
    }
 
-  public getUserDetails(id: string): Observable<User> {
-    return this.http.get(`${this.url}/client/${id}`, this.options)
+  public getUserDetails(): Observable<User> {
+    return this.http.get(`${this.url}/client/${this.authService.currentUserId}`, this.options)
     .map(res => res.json());
   }
 

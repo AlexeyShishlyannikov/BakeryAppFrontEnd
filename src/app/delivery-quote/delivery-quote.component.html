@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="text-center">
+    <h2>
+      What is your ZIP code?
+    </h2>
+    <mat-form-field>
+      <input
+      type="number"
+      matInput
+      #zip="ngModel"
+      name="zip"
+      [(ngModel)]="userZip"
+      (keyup)="calcPrice()"
+      placeholder="ZIP CODE">
+    </mat-form-field>
+    <h2 *ngIf="price != null && price != 1000">
+      Delivery price is {{ price }}$
+    </h2>
+    <h2 *ngIf="price === null">
+      Please provide your ZIP
+    </h2>
+    <div *ngIf="price === 1000">
+      <h2>
+        Sorry, but it's too far.
+      </h2>
+      <mat-card-subtitle>We only deliver within 30 miles from Chicago</mat-card-subtitle>
+    </div>
+  </div>
+</div>

@@ -44,6 +44,9 @@ import { ItemIngredientComponent } from './item-ingredient/item-ingredient.compo
 import { PhotoCarouselComponent } from './photo-carousel/photo-carousel.component';
 import { MenuItem } from './models/menuItem';
 import { MenuItemService } from './menu-item.service';
+import { ItemPriceCalcComponent } from './item-price-calc/item-price-calc.component';
+import { DeliveryQuoteComponent } from './delivery-quote/delivery-quote.component';
+import { DeliveryService } from './delivery.service';
 
 @NgModule({
   declarations: [
@@ -63,11 +66,14 @@ import { MenuItemService } from './menu-item.service';
     MenuFilterComponent,
     MenuSwitchWeightComponent,
     ItemIngredientComponent,
-    PhotoCarouselComponent
+    PhotoCarouselComponent,
+    ItemPriceCalcComponent,
+    DeliveryQuoteComponent
   ],
   entryComponents: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DeliveryQuoteComponent
   ],
   imports: [
     BrowserModule,
@@ -117,7 +123,8 @@ import { MenuItemService } from './menu-item.service';
     MenuService,
     FaqService,
     IngredientService,
-    MenuItemService
+    MenuItemService,
+    DeliveryService
   ],
   bootstrap: [AppComponent]
 })

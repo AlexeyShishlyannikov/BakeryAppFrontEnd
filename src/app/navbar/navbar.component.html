@@ -6,6 +6,9 @@
     <button routerLink="/menu" mat-button>
       Menu
     </button>
+    <button (click)="openDeliveryDialog()" mat-button>
+      <mat-icon>local_shipping</mat-icon> Delivery Quote
+    </button>
     <span class="spacer"></span>
     <button
     *ngIf="!authService.isLoggedIn()"

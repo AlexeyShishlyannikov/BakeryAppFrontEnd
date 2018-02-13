@@ -1,0 +1,22 @@
+
+<h2 *ngIf="totalPrice >= minimumPrice; else wrongWeight">
+  Your price is <mat-icon>attach_money</mat-icon>
+  <span class="m-l--10">
+    {{ totalPrice | number }}
+  </span>
+</h2>
+<ng-template #wrongWeight>
+  <h2>
+    Please enter valid weight
+  </h2>
+</ng-template>
+<mat-form-field>
+  <input
+  matInput
+  #weight="ngModel"
+  name="weight"
+  [(ngModel)]="input"
+  maxlength="4"
+  (keyup)="calcPrice(weight.value)"
+  placeholder="Min weight is {{ menuItemService.getMinimumWeight(item, isMetric) }}">
+</mat-form-field>

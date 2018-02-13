@@ -27,7 +27,7 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.userSubscription = this.userService
-      .getUserDetails(this.userId)
+      .getUserDetails()
       .subscribe(user => {
         this.user = user;
       });

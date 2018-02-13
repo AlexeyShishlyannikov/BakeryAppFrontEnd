@@ -57,6 +57,9 @@ export class AuthService {
   }
   get currentUserId() {
     const token = this.decodeToken();
+    if (token === null) {
+      return null;
+    }
     return token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
   }
 

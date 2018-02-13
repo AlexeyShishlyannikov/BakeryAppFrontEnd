@@ -1,0 +1,16 @@
+.price{
+  margin-left: -5px;
+  font-size: 120%;
+  font-weight: 400;
+}
+.weight{
+  font-size: 110%;
+  font-weight: 400;
+}
+.spread-text{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.lowercase{
+  text-transform: lowercase;
+}

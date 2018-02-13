@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { AuthService } from '../auth.service';
+import { DeliveryQuoteComponent } from '../delivery-quote/delivery-quote.component';
 
 @Component({
   selector: 'app-navbar',
@@ -22,6 +23,10 @@ export class NavbarComponent {
 
   openRegisterDialog() {
     this.dialog.open(RegisterComponent);
+  }
+
+  openDeliveryDialog() {
+    this.dialog.open(DeliveryQuoteComponent);
   }
 
   get matchMedia(): boolean {

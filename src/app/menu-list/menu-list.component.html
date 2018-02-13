@@ -2,7 +2,7 @@
   <div class="text-center m-20">
     <app-menu-filter (selectedType)="filterMenu($event)"></app-menu-filter>
   </div>
-  <div class="text-center m-20">
+  <div *ngIf="weightToggle" class="text-center m-20">
     <app-menu-switch-weight (isMetric)="switchWeight($event)">
 
     </app-menu-switch-weight>

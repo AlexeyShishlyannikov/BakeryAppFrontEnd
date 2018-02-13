@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { MenuService } from '../menu.service';
 import 'rxjs/add/operator/switchMap';
 import { Photo } from '../models/Photo';
+import { MenuItemService } from '../menu-item.service';
 
 @Component({
   selector: 'app-item-details',
@@ -12,12 +13,15 @@ import { Photo } from '../models/Photo';
   styleUrls: ['./item-details.component.css']
 })
 export class ItemDetailsComponent implements OnInit, OnDestroy {
-  subscription: Subscription;
+  itemSubscription: Subscription;
+  ingredienSubscription: Subscription;
   id: number;
   item: MenuItem;
+  isMetric = false;
   constructor(
     private route: ActivatedRoute,
-    private menuService: MenuService
+    private menuService: MenuService,
+    public menuItemService: MenuItemService
   ) { }
 
   ngOnInit() {
@@ -25,7 +29,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   }
 
   private getItem(): void {
-    this.subscription = this.route.paramMap
+    this.itemSubscription = this.route.paramMap
       .switchMap(params => {
       this.id = +params.get('id');
       return this.menuService.getMenuItem(this.id);
@@ -34,8 +38,10 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
       this.item = item;
     });
   }
-
+  public switchWeight(isMetric: boolean) {
+    this.isMetric = isMetric;
+  }
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.itemSubscription.unsubscribe();
   }
 }

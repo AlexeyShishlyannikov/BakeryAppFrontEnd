@@ -13,6 +13,7 @@ export class MenuListComponent implements OnInit, OnDestroy {
   menuFiltered: MenuItem[];
   isMetric = false;
   subscription: Subscription;
+  weightToggle = true;
   constructor(
     private menuService: MenuService
   ) { }
@@ -38,8 +39,10 @@ export class MenuListComponent implements OnInit, OnDestroy {
 
   private filterMenu(filterType: string) {
     if (filterType === 'All') {
+      this.weightToggle = true;
       this.menuFiltered = this.menu;
     } else {
+      filterType === 'Cake' ? this.weightToggle = true : this.weightToggle = false;
       this.menuFiltered = this.menu
         .filter(item => item.type === filterType);
     }

@@ -1,15 +1,19 @@
-<div class="image-container">
+<div
+*ngIf="photos"
+class="image-container">
   <div class="outer">
     <div class="fix-height">
-      <img mat-card-image src="{{ currentPhoto }}" alt="Photo">
+      <img mat-card-image [src]="stringPhotos[selectedPhoto]" alt="Photo">
+      <mat-icon *ngIf="stringPhotos.length > 1" (click)="switchPhoto(1)" class="left icon">keyboard_arrow_left</mat-icon>
+      <mat-icon *ngIf="stringPhotos.length > 1" (click)="switchPhoto(-1)" class="right icon">keyboard_arrow_right</mat-icon>
     </div>
   </div>
 </div>
-<div class="text-center overflow small-margin">
+<!-- <div *ngIf="stringPhotos.length > 1" class="text-center overflow small-margin">
   <img
   *ngFor="let photo of stringPhotos;let i = index;"
   (click)="switchPhoto(i)"
   class=" small-image"
   src="{{ photo }}">
-</div>
+</div> -->
 

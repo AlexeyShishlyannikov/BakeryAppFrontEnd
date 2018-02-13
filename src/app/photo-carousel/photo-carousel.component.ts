@@ -24,7 +24,14 @@ export class PhotoCarouselComponent implements OnInit {
     return this.stringPhotos[this.selectedPhoto];
   }
 
-  switchPhoto(photoIndex: number): void {
-    this.selectedPhoto = photoIndex;
+  switchPhoto(direction: number): void {
+    const maxIndex = this.stringPhotos.length - 1;
+    if (this.selectedPhoto === 0 && direction === -1) {
+      this.selectedPhoto = maxIndex;
+    } else if (this.selectedPhoto === maxIndex) {
+      this.selectedPhoto = 0;
+    } else {
+      this.selectedPhoto += direction;
+    }
   }
 }
