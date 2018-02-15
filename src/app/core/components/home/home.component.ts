@@ -13,10 +13,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.instagram.getRecentMedia()
-      .subscribe(res => {
-        this.instagramData = res.data.splice(12);
-      });
+    // this.instagram.getRecentMedia()
+    //   .subscribe(res => {
+    //     this.instagramData = res.data.splice(0, 8);
+    //   });
   }
   get matchMedia(): boolean {
     const mq = window.matchMedia('(min-width: 1200px)');

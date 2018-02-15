@@ -8,6 +8,8 @@ import { AuthGuard } from 'auth/services/auth.guard';
 import { AdminConfirmPopupComponent } from './components/admin-confirm-popup/admin-confirm-popup.component';
 import { AdminItemFormComponent } from './components/admin-item-form/admin-item-form.component';
 import { PhotoService } from './services/photo.service';
+import { AdminClientListComponent } from './components/admin-client-list/admin-client-list.component';
+import { AdminOrderListComponent } from './components/admin-order-list/admin-order-list.component';
 
 @NgModule({
   imports: [
@@ -23,9 +25,25 @@ import { PhotoService } from './services/photo.service';
         component: AdminMenuListComponent,
         canActivate: [AuthGuard, AdminGuard]
       },
+      {
+        path: 'admin/clients',
+        component: AdminClientListComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
+      {
+        path: 'admin/orders',
+        component: AdminOrderListComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
     ])
   ],
-  declarations: [AdminMenuListComponent, AdminConfirmPopupComponent, AdminItemFormComponent],
+  declarations: [
+    AdminMenuListComponent,
+    AdminConfirmPopupComponent,
+    AdminItemFormComponent,
+    AdminClientListComponent,
+    AdminOrderListComponent
+  ],
   providers: [
     AdminGuard,
     PhotoService

@@ -1,9 +1,10 @@
 <div class="container">
-  {{ item | json }}
   <div class="row">
-    <h1 class="col m-t-10">
-      {{ id > 0 ? 'EDIT' : 'ADD' }} ITEM
-    </h1>
+    <div class="col">
+      <h1 class="margin">
+        {{ id > 0 ? 'EDIT' : 'ADD' }} ITEM
+      </h1>
+    </div>
     <div class="col">
       <button
       *ngIf="id > 0"

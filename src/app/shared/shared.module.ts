@@ -14,6 +14,8 @@ import { IngredientService } from 'shared/services/ingredient.service';
 
 import { MaterialModule } from '../material.module';
 import { ItemPriceCalcComponent } from './components/item-price-calc/item-price-calc.component';
+import { PhonePipe } from '../helpers/phone.pipe';
+import { OrderService } from 'shared/services/order.service';
 
 @NgModule({
   imports: [
@@ -35,14 +37,16 @@ import { ItemPriceCalcComponent } from './components/item-price-calc/item-price-
     PhotoCarouselComponent,
     ItemPriceCalcComponent,
     NotFoundComponent,
-    DeliveryQuoteComponent
+    DeliveryQuoteComponent,
+    PhonePipe
   ],
   declarations: [
     MenuSwitchWeightComponent,
     PhotoCarouselComponent,
     ItemPriceCalcComponent,
     NotFoundComponent,
-    DeliveryQuoteComponent
+    DeliveryQuoteComponent,
+    PhonePipe
   ],
   entryComponents: [
     DeliveryQuoteComponent
@@ -50,7 +54,9 @@ import { ItemPriceCalcComponent } from './components/item-price-calc/item-price-
   providers: [
     IngredientService,
     DeliveryService,
-    DataService
+    DataService,
+    OrderService,
+    PhonePipe
   ]
 })
 export class SharedModule { }

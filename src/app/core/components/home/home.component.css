@@ -16,3 +16,20 @@ h1{
   -ms-filter: blur(1px);
   filter: blur(1px); */
 }
+.absolute{
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  top: 50%;
+  overflow: hidden;
+}
+
+/* .transparent{
+  mix-blend-mode: multiply;
+} */
+
+@media (max-width: 576px) {
+  h1{
+    font-size: 200%;
+  }
+}

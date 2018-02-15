@@ -7,11 +7,11 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DataService {
-  private options: RequestOptions;
+  protected options: RequestOptions;
   constructor(
-    private http: Http,
-    private authService: AuthService,
-    private url: string
+    protected http: Http,
+    protected authService: AuthService,
+    protected url: string
   ) {
     this.options = this.authService.setOptions();
   }

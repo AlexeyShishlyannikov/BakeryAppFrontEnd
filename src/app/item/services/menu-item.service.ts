@@ -11,7 +11,7 @@ export class MenuItemService {
     const price: Price = menuItem.price;
     switch (menuItem.type) {
       case 'Cake':
-        return !isMetric === true ? price.cakePricePerPound + '/lb' : price.cakePricePerKg + '/kg';
+        return !isMetric === true ? price.cakePricePerPound + '$/lb' : price.cakePricePerKg + '$/kg';
       default:
         return `${price.pricePerSet[0].setPrice}$/${price.pricePerSet[0].setSize}pc`;
     }

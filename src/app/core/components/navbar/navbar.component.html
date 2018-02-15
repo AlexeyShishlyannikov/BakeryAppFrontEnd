@@ -24,8 +24,13 @@
       <mat-menu #appMenu="matMenu">
         <button routerLink="admin/menu" mat-menu-item>Menu</button>
         <button mat-menu-item>FAQ</button>
-        <button mat-menu-item>Clients</button>
-        <button mat-menu-item>Orders</button>
+        <button
+        routerLink="admin/clients"
+        mat-menu-item>Clients</button>
+        <button
+        mat-menu-item
+        routerLink="admin/orders"
+        >Orders</button>
       </mat-menu>
 
       <button mat-button [matMenuTriggerFor]="appMenu">

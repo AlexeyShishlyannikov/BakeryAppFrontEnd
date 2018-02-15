@@ -12,10 +12,16 @@ import { MenuModule } from './menu/menu.module';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
+import { PhonePipe } from './helpers/phone.pipe';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     SharedModule,
@@ -26,6 +32,7 @@ import { UserModule } from './user/user.module';
     ItemModule,
     MenuModule,
     UserModule,
+    CartModule,
     RouterModule.forRoot(<Routes>[
       {
         path: '',
@@ -35,7 +42,9 @@ import { UserModule } from './user/user.module';
         path: '**',
         component: NotFoundComponent
       }
-    ])
+    ]),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   bootstrap: [AppComponent]
 })

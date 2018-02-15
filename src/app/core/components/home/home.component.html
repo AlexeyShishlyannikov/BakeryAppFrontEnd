@@ -12,21 +12,28 @@
     <mat-grid-tile class="image" [style.background-image]="'url(\'../../assets/img4.jpeg\')'">
       <h1>Call us!</h1>
     </mat-grid-tile>
+    <mat-grid-tile class="image" [style.background-image]="'url(\'../../assets/img44.jpeg\')'">
+      <img src="" alt="">
+    </mat-grid-tile>
+    <mat-grid-tile class="image" [style.background-image]="'url(\'../../assets/img33.jpeg\')'">
+    </mat-grid-tile>
+    <!-- <div class="absolute">
+      <div class="container">
+        <mat-card class="m-20">
+          <mat-card-header>
+            <h2 class="text-center">Our Instagram</h2>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-sm-3 col-6 m-20" *ngFor="let posting of instagramData">
+                <a href="{{ posting.link }}" target="_blank">
+                  <img [src]="posting.images.low_resolution.url" alt="">
+                </a>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div> -->
   </mat-grid-list>
-  <div class="container">
-    <mat-card class="m-20">
-      <mat-card-header>
-        <h2 class="text-center">Our Instagram</h2>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="row">
-          <div class="col-sm-3 col-6 m-20" *ngFor="let posting of instagramData">
-            <a href="{{ posting.link }}" target="_blank">
-              <img [src]="posting.images.low_resolution.url" alt="">
-            </a>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
 </div>

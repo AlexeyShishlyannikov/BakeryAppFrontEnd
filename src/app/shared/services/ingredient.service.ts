@@ -12,8 +12,8 @@ export class IngredientService extends DataService {
     http: Http,
     authService: AuthService
   ) {
-    const menuServiceUrl = `${environment.API_URL}/ingredients`;
-    super(http, authService, menuServiceUrl);
+    const ingredientServiceUrl = `${environment.API_URL}/ingredients`;
+    super(http, authService, ingredientServiceUrl);
   }
 
   public getIngredient(id: number): Observable<Ingredient> {
