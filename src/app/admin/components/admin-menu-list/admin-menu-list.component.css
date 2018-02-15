@@ -1,0 +1,10 @@
+mat-header-cell,
+mat-cell{
+  flex: 2;
+}
+.flex-1{
+  flex: 1;
+}
+.center{
+  align-items: center;
+}

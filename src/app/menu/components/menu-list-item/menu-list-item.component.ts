@@ -17,6 +17,6 @@ export class MenuListItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.photoData = `data:${this.menuItem.photos[0].contentType};base64,${this.menuItem.photos[0].data}`;
+
   }
 }

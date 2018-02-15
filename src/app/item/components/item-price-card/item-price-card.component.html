@@ -1,0 +1,38 @@
+<mat-card>
+  <div class="row">
+    <div class="col-6">
+      <mat-card-header>
+        <mat-card-title *ngIf="item.type === 'Cake'">
+          <h2>
+            Price
+            <mat-icon>attach_money</mat-icon>
+            <span class="m-l--10">
+              {{ menuItemService.getPrice(item, selected) }}
+            </span>
+          </h2>
+        </mat-card-title>
+      </mat-card-header>
+      <div *ngIf="item.type != 'Cake'">
+        <mat-card-header>
+          <mat-card-title>
+            <h2>
+              Set prices
+            </h2>
+          </mat-card-title>
+        </mat-card-header>
+        <p *ngFor="let price of item.price.pricePerSet">
+          <mat-icon>attach_money</mat-icon>
+          <span class="price">
+            {{ price.setPrice }} for {{ price.setSize }}
+            <span class="lowercase">{{item.type}}s</span>
+          </span>
+        </p>
+      </div>
+      <app-menu-switch-weight class="m-t-10" *ngIf="item.type === 'Cake'" (isMetric)="switchWeight($event)">
+      </app-menu-switch-weight>
+    </div>
+    <div *ngIf="item.type === 'Cake'" class="col-6">
+      <app-item-price-calc [item]="item" [isMetric]="selected"></app-item-price-calc>
+    </div>
+  </div>
+</mat-card>

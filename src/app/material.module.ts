@@ -12,6 +12,10 @@ import {
   MatSidenavModule,
   MatToolbarModule,
   MatTooltipModule,
+  MatTableModule,
+  MatSortModule,
+  MatSelectModule,
+  MatCheckboxModule,
 } from '@angular/material';
 
 @NgModule({
@@ -27,7 +31,11 @@ import {
     MatInputModule,
     MatFormFieldModule,
     MatGridListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule,
+    MatSortModule,
+    MatSelectModule,
+    MatCheckboxModule
   ],
   exports: [
     MatToolbarModule,
@@ -41,7 +49,11 @@ import {
     MatInputModule,
     MatFormFieldModule,
     MatGridListModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatTableModule,
+    MatSortModule,
+    MatSelectModule,
+    MatCheckboxModule
   ],
   declarations: [],
   providers: [],

@@ -37,7 +37,7 @@ export class MenuListComponent implements OnInit, OnDestroy {
         });
   }
 
-  private filterMenu(filterType: string) {
+  public filterMenu(filterType: string) {
     if (filterType === 'All') {
       this.weightToggle = true;
       this.menuFiltered = this.menu;

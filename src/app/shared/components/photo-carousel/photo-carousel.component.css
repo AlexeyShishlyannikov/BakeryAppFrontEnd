@@ -54,3 +54,9 @@
 .right{
   right: 5%;
 }
+.bottom{
+  font-size: 500%;
+  left: 45%;
+  top: 80%;
+  color: red;
+}

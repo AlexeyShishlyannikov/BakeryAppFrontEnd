@@ -5,6 +5,8 @@ import { ItemDetailsComponent } from 'item/components/item-details/item-details.
 
 import { MenuItemService } from './services/menu-item.service';
 import { SharedModule } from 'shared/shared.module';
+import { ItemPriceCardComponent } from './components/item-price-card/item-price-card.component';
+import { ItemIngredientsComponent } from './components/item-ingredients/item-ingredients.component';
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { SharedModule } from 'shared/shared.module';
     ])
   ],
   declarations: [
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    ItemPriceCardComponent,
+    ItemIngredientsComponent
   ],
   providers: [
     MenuItemService,

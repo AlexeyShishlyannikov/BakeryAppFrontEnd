@@ -2,10 +2,11 @@
 *ngIf="photos"
 class="image-container">
   <div class="outer">
-    <div class="fix-height">
+    <div class="fix-height" *ngIf="stringPhotos">
       <img mat-card-image [src]="stringPhotos[selectedPhoto]" alt="Photo">
       <mat-icon *ngIf="stringPhotos.length > 1" (click)="switchPhoto(1)" class="left icon">keyboard_arrow_left</mat-icon>
       <mat-icon *ngIf="stringPhotos.length > 1" (click)="switchPhoto(-1)" class="right icon">keyboard_arrow_right</mat-icon>
+      <mat-icon *ngIf="stringPhotos.length > 0 && fromAdmin === true" (click)="deletePicture()" class="bottom icon">clear</mat-icon>
     </div>
   </div>
 </div>

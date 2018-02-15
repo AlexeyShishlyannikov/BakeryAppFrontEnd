@@ -1,0 +1,7 @@
+<div>
+  <h2>Are you sure?</h2>
+  <p>Confirm to delete item # {{ id }}.</p>
+  <br>
+  <button (click)="deleteItem()" routerLink="/admin/menu" [queryParams]="{ deletedId: id }" color="warn" mat-raised-button>DELETE</button>
+  <button (click)="dialog.closeAll()" mat-raised-button>CANCEL</button>
+</div>

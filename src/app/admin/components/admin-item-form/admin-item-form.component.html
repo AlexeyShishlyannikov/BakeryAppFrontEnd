@@ -1,0 +1,160 @@
+<div class="container">
+  {{ item | json }}
+  <div class="row">
+    <h1 class="col m-t-10">
+      {{ id > 0 ? 'EDIT' : 'ADD' }} ITEM
+    </h1>
+    <div class="col">
+      <button
+      *ngIf="id > 0"
+      class="float-right"
+      mat-button color="warn"
+      (click)="deleteItem()"
+      >
+        DELETE
+      </button>
+    </div>
+  </div>
+  <form novalidate #f="ngForm">
+    <div class="row">
+      <div class="col-sm-6">
+        <mat-card class="m-20">
+          <mat-card-header>
+            <h2>General Info</h2>
+          </mat-card-header>
+          <mat-form-field class="m-b-10">
+            <input
+            #nameInput="ngModel"
+            type="text"
+            name="name"
+            [(ngModel)]="item.name"
+            matInput
+            placeholder="Name"
+            required>
+            <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
+              Name is required.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="m-b-10">
+            <mat-select
+            #type
+            name="type"
+            [(ngModel)]="item.type"
+            placeholder="Type"
+            required>
+              <mat-option value="Cake">Cake</mat-option>
+              <mat-option value="Cupcake">Cupcake</mat-option>
+              <mat-option value="Macaron">Macaron</mat-option>
+            </mat-select>
+            <mat-error *ngIf="type.required && type.value === ''">
+              Type is required.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="m-b-10">
+            <textarea
+            #descInput="ngModel"
+            type="text"
+            name="desc"
+            [(ngModel)]="item.description"
+            matInput
+            matTextareaAutosize
+            matAutosizeMinRows="2"
+            matAutosizeMaxRows="10"
+            placeholder="Description"
+            required>
+            </textarea>
+            <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
+              Description is required.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="m-b-10">
+            <input
+            #minWeight="ngModel"
+            name="minWeight"
+            [(ngModel)]="item.minimumWeight"
+            matInput
+            placeholder="Minimum Weight"
+            required>
+            <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
+              Minimum weight is required.
+            </mat-error>
+          </mat-form-field>
+        </mat-card>
+      </div>
+      <div class="col-sm-6">
+        <mat-card class="m-20 text-center">
+          <mat-card-header>
+            <h2>Price</h2>
+          </mat-card-header>
+          <div class="text-center" *ngIf="item.type === null">
+            <h3>Please select type first</h3>
+          </div>
+          <mat-form-field class="m-b-10" *ngIf="item.type === 'Cake'">
+            <input #price="ngModel" name="price" [(ngModel)]="item.price.cakePricePerPound" matInput placeholder="Price per pound" required>
+            <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
+              Price per pound is required.
+            </mat-error>
+          </mat-form-field>
+          <div *ngIf="item.type && item.type !== 'Cake'">
+            <div *ngFor="let price of item.price.pricePerSet;let i = index">
+              <mat-form-field class=" short-input">
+                <input #size="ngModel" name="setSize{{ i+1 }}" [(ngModel)]="item.price.pricePerSet[i].setSize" matInput placeholder="Size of set {{ i+1 }}"
+                  required>
+                <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
+                  Define set size.
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="short-input">
+                <input #price="ngModel" name="setPrice{{ i+1 }}" [(ngModel)]="item.price.pricePerSet[i].setPrice" matInput placeholder="Price for set {{ i+1 }}"
+                  required>
+                <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
+                  Define set price.
+                </mat-error>
+              </mat-form-field>
+              <button mat-icon-button color="warn" (click)="deleteSet(i)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </div>
+            <button class="m-b-20 m-t--20" mat-button color="accent" (click)="addSet()">
+              <mat-icon>add</mat-icon> ADD SET
+            </button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <mat-card class="m-20">
+    <div>
+      <mat-card-header>
+        <h2 class="m-20">Select ingredients</h2>
+      </mat-card-header>
+      <mat-checkbox
+        *ngFor="let i of ingredients"
+        value="i.id"
+        (change)="onIngToggle(i.id)"
+        [checked]="item.ingredients.includes(i.id)"
+        >
+        {{ i.name }}
+      </mat-checkbox>
+    </div>
+    </mat-card>
+    <mat-card class="m-20">
+      <mat-card-title>
+        <h2>Pictures</h2>
+      </mat-card-title>
+      <app-photo-carousel mat-card-image [photos]="photos" [fromAdmin]="true" (deletePic)="deletePhoto($event)"></app-photo-carousel>
+      <div class="m-20">
+        <button mat-raised-button color="primary" (click)="imgFileInput.click()">Add a photo</button>
+        <input hidden type="file" #imgFileInput (change)="addImage()" />
+      </div>
+    </mat-card>
+    <div class="text-center m-20">
+      <button
+        color="primary"
+        [disabled]="f.invalid"
+        (click)="submit()"
+        mat-raised-button>
+        {{ id > 0 ? 'SAVE' : 'SUBMIT' }}
+      </button>
+    </div>
+  </form>
+</div>

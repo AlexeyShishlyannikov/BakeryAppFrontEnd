@@ -1,0 +1,9 @@
+mat-form-field{
+  width: 100%;
+}
+mat-checkbox{
+  margin: 0 10px;
+}
+.short-input{
+  width: 100px;
+}

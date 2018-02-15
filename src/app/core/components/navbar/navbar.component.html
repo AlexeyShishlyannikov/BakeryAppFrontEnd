@@ -10,27 +10,44 @@
       <mat-icon>local_shipping</mat-icon> Delivery Quote
     </button>
     <span class="spacer"></span>
-    <button
-    *ngIf="!authService.isLoggedIn()"
-    (click)="openLoginDialog()"
-    mat-button>Login</button>
-    <button
-    *ngIf="!authService.isLoggedIn()"
-    (click)="openRegisterDialog()"
-    mat-button>Register</button>
-    <button
-    *ngIf="authService.isLoggedIn()"
-    mat-button
-    [routerLink]="['/user/', authService.currentUserId]">
-    <span>
-      <mat-icon class="">account_circle</mat-icon>
-      {{ authService.currentUserEmail }}
-    </span>
-    </button>
-    <button
-    (click)="authService.logout()"
-    *ngIf="authService.isLoggedIn()"
-    mat-button>Logout</button>
+    <div *ngIf="!authService.isLoggedIn()">
+      <button
+        (click)="openLoginDialog()"
+        mat-button>Login
+      </button>
+      <button
+        (click)="openRegisterDialog()"
+        mat-button>Register
+      </button>
+    </div>
+    <div *ngIf="authService.isAdmin()">
+      <mat-menu #appMenu="matMenu">
+        <button routerLink="admin/menu" mat-menu-item>Menu</button>
+        <button mat-menu-item>FAQ</button>
+        <button mat-menu-item>Clients</button>
+        <button mat-menu-item>Orders</button>
+      </mat-menu>
+
+      <button mat-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>settings</mat-icon>
+        <span>Admin</span>
+      </button>
+    </div>
+    <div *ngIf="authService.isLoggedIn()">
+      <button *ngIf="!authService.isAdmin()"
+      mat-button
+      [routerLink]="['/user/', authService.currentUserId]">
+        <span>
+          <mat-icon class="">account_circle</mat-icon>
+          {{ authService.currentUserEmail }}
+        </span>
+      </button>
+      <button (click)="authService.logout()"
+        mat-button>
+        Logout
+      </button>
+    </div>
+
   </mat-toolbar-row>
 </mat-toolbar>
 

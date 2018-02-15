@@ -43,6 +43,6 @@ export class DataService {
   protected delete(id: number): Observable<any> {
     return this.http
       .delete(`${this.url}/${id}`, this.options)
-      .map(res => res.json());
+      .map(res => res.toString);
   }
 }

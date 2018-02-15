@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="text-center m-20">
+    <button color="accent" mat-raised-button routerLink="./add-item">ADD ITEM</button>
+  </div>
+  <div class="mat-elevation-z8 m-t-10">
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+      <!-- id Column -->
+      <ng-container matColumnDef="id">
+        <mat-header-cell class="flex-1" *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+        <mat-cell class="flex-1" *matCellDef="let item"> {{item.id}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.name}} </mat-cell>
+      </ng-container>
+
+      <!-- type Column -->
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.type}} </mat-cell>
+      </ng-container>
+
+      <!-- Desc Column -->
+      <ng-container  matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+        <mat-cell class="no-overflow" *matCellDef="let item"> {{item.description}} </mat-cell>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Price </mat-header-cell>
+        <mat-cell *matCellDef="let item"> {{item.type === 'Cake' ? item.price.cakePricePerPound + '$' : item.price.pricePerSet[0].setPrice + '$/' + item.price.pricePerSet[0].setSize + 'pc'}} </mat-cell>
+      </ng-container>
+      <!-- Edit Column -->
+      <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <button color="accent" mat-button [routerLink]="['./', item.id]">
+           <mat-icon>build</mat-icon> EDIT
+          </button>
+        </mat-cell>
+      </ng-container>
+      <!-- Delete Column -->
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+        <mat-cell *matCellDef="let item">
+          <button color="warn" mat-button routerLink="/admin/menu" [queryParams]="{ deleteId: item.id }" (click)="deleteItem(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="!matchMedia ? displayedColumns : displayColumnsMedia"></mat-header-row>
+      <mat-row  *matRowDef="let row; columns: !matchMedia ? displayedColumns : displayColumnsMedia;"></mat-row>
+    </mat-table>
+  </div>
+</div>

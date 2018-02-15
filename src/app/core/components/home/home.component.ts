@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InstagramService } from '../../services/instagram.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  instagramData: any[] = [];
+  constructor(
+    private instagram: InstagramService
+  ) { }
 
   ngOnInit() {
+    this.instagram.getRecentMedia()
+      .subscribe(res => {
+        this.instagramData = res.data.splice(12);
+      });
   }
   get matchMedia(): boolean {
     const mq = window.matchMedia('(min-width: 1200px)');

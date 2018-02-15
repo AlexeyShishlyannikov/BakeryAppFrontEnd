@@ -1,0 +1,19 @@
+<div class="text-center m-20">
+  <h1 class="spread-text">Our organic ingredients</h1>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <mat-card *ngFor="let i of ingredients" class="m-20">
+      <mat-card-title>
+        <h2>
+          {{ i.name }}
+        </h2>
+      </mat-card-title>
+      <mat-card-content class="m-t-10">
+        <p>
+          {{ i.description }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

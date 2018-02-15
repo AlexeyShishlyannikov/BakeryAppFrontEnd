@@ -7,13 +7,13 @@
     </mat-card-title>
     <mat-card-subtitle>{{ menuItem.type }}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{ photoData }}" alt="Photo">
+  <app-photo-carousel mat-card-image [photos]="menuItem.photos"></app-photo-carousel>
   <mat-card-content>
     <p>
       {{ menuItem.description }}
     </p>
     <p *ngIf="menuItem.type == 'Cake'" class="weight">
-      Minimum Weight: {{ menuItemService.getMinimumWeight(menuItem, isMetric) }}
+      Minimum Weight: {{ menuItemService.getMinimumWeight(menuItem, isMetric) | number }} {{ isMetric ? 'kg' : 'lb' }}
     </p>
   </mat-card-content>
   <mat-card-actions>

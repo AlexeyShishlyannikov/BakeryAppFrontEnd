@@ -4,6 +4,7 @@ import { SharedModule } from 'shared/shared.module';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
+import { InstagramService } from './services/instagram.service';
 
 @NgModule({
   imports: [
@@ -17,6 +18,9 @@ import { RouterModule } from '@angular/router';
   exports: [
     HomeComponent,
     NavbarComponent
+  ],
+  providers: [
+    InstagramService
   ]
 })
 export class CoreModule { }

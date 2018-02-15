@@ -2,81 +2,26 @@
   <mat-card class="m-20 ">
     <app-photo-carousel [photos]="item.photos"></app-photo-carousel>
     <mat-divider [inset]="true"></mat-divider>
-    <mat-card class="m-20 mat-elevation-z7">
-      <mat-card-header>
-        <mat-card-title>
-          <h2>
-            {{ item.name }}
-          </h2>
-        </mat-card-title>
-        <mat-card-subtitle>
-          {{ item.type }}
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-divider [inset]="true"></mat-divider>
-      <mat-card-content class="m-t-10">
-        <p>
-          {{ item.description }}
-        </p>
-        <p *ngIf="item.type == 'Cake'" class="weight">
-          Minimum Weight: {{ menuItemService.getMinimumWeight(item, isMetric) }}
-        </p>
-      </mat-card-content>
-    </mat-card>
-    <div class="row">
-      <div class="col-6">
-        <mat-card-header>
-          <mat-card-title *ngIf="item.type === 'Cake'">
-            <h2>
-              Price
-              <mat-icon>attach_money</mat-icon>
-              <span class="m-l--10">
-                {{ menuItemService.getPrice(item, isMetric) }}
-              </span>
-            </h2>
-          </mat-card-title>
-        </mat-card-header>
-        <div *ngIf="item.type != 'Cake'">
-          <mat-card-header>
-            <mat-card-title>
-              <h2>
-                Set prices
-              </h2>
-            </mat-card-title>
-          </mat-card-header>
-          <p *ngFor="let price of item.price.pricePerSet">
-            <mat-icon>attach_money</mat-icon>
-            <span class="price">
-              {{ price.setPrice }} for {{ price.setSize }}
-              <span class="lowercase">{{item.type}}s</span>
-            </span>
-          </p>
-        </div>
-        <app-menu-switch-weight class="m-t-10" *ngIf="item.type === 'Cake'" (isMetric)="switchWeight($event)">
-        </app-menu-switch-weight>
-      </div>
-      <div *ngIf="item.type === 'Cake'" class="col-6">
-        <app-item-price-calc [item]="item" [isMetric]="isMetric"></app-item-price-calc>
-      </div>
-    </div>
+    <mat-card-header class="m-t-10">
+      <mat-card-title>
+        <h2>
+          {{ item.name }}
+        </h2>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ item.type }}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-card-content class="m-t-10">
+      <p>
+        {{ item.description }}
+      </p>
+      <p *ngIf="item.type == 'Cake'" class="weight">
+        Minimum Weight: {{ menuItemService.getMinimumWeight(item, isMetric) }}
+      </p>
+    </mat-card-content>
   </mat-card>
-  <div class="text-center">
-    <h1 class="spread-text">Our organic ingredients</h1>
-  </div>
-  <div class="row">
-    <div class="col-sm-6">
-      <mat-card *ngFor="let i of item.ingredients" class="m-20">
-        <mat-card-title>
-          <h2>
-            {{ i.name }}
-          </h2>
-        </mat-card-title>
-        <mat-card-content class="m-t-10">
-          <p>
-            {{ i.description }}
-          </p>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
+  <app-item-price-card [item]="item" (isMetric)="switchWeight($event)"></app-item-price-card>
+  <app-item-ingredients [ingredients]="item.ingredients"></app-item-ingredients>
 </div>
