@@ -12,13 +12,11 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
   @Input('userId') userId: string;
   user: User = {
     id: null,
-    firstName: '',
-    lastName: '',
-    street: '',
-    town: '',
+    name: '',
+    address: '',
     zipCode: null,
     phone: '',
-    email: '',
+    email: ''
   };
   userSubscription: Subscription;
   constructor(

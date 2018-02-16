@@ -10,6 +10,8 @@ import { AdminItemFormComponent } from './components/admin-item-form/admin-item-
 import { PhotoService } from './services/photo.service';
 import { AdminClientListComponent } from './components/admin-client-list/admin-client-list.component';
 import { AdminOrderListComponent } from './components/admin-order-list/admin-order-list.component';
+import { AdminIngredientListComponent } from './components/admin-ingredient-list/admin-ingredient-list.component';
+import { AdminIngredientFormComponent } from './components/admin-ingredient-form/admin-ingredient-form.component';
 
 @NgModule({
   imports: [
@@ -35,6 +37,16 @@ import { AdminOrderListComponent } from './components/admin-order-list/admin-ord
         component: AdminOrderListComponent,
         canActivate: [AuthGuard, AdminGuard]
       },
+      {
+        path: 'admin/ingredients',
+        component: AdminIngredientListComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
+      {
+        path: 'admin/ingredients/:id',
+        component: AdminIngredientFormComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
     ])
   ],
   declarations: [
@@ -42,7 +54,9 @@ import { AdminOrderListComponent } from './components/admin-order-list/admin-ord
     AdminConfirmPopupComponent,
     AdminItemFormComponent,
     AdminClientListComponent,
-    AdminOrderListComponent
+    AdminOrderListComponent,
+    AdminIngredientListComponent,
+    AdminIngredientFormComponent
   ],
   providers: [
     AdminGuard,

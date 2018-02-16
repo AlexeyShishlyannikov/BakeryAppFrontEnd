@@ -23,6 +23,7 @@
     <div *ngIf="authService.isAdmin()">
       <mat-menu #appMenu="matMenu">
         <button routerLink="admin/menu" mat-menu-item>Menu</button>
+        <button routerLink="admin/ingredients" mat-menu-item>Ingredients</button>
         <button mat-menu-item>FAQ</button>
         <button
         routerLink="admin/clients"

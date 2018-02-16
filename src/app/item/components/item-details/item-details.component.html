@@ -1,5 +1,5 @@
-<div class="container">
-  <mat-card class="m-20 ">
+<div class="container" *ngIf="item">
+  <mat-card class="m-20">
     <app-photo-carousel [photos]="item.photos"></app-photo-carousel>
     <mat-divider [inset]="true"></mat-divider>
     <mat-card-header class="m-t-10">

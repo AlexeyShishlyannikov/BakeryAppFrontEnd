@@ -2,7 +2,7 @@
   <mat-card-header>
     <mat-card-title>
       <h1>
-        {{ user.firstName + ' ' + user.lastName }}
+        {{ user.name }}
       </h1>
     </mat-card-title>
     <mat-card-subtitle>Our favorite client</mat-card-subtitle>
@@ -14,26 +14,12 @@
       #firstNameInput="ngModel"
       type="text"
       name="firstName"
-      [(ngModel)]="user.firstName"
+      [(ngModel)]="user.name"
       matInput
       placeholder="First Name"
       required>
       <mat-error *ngIf="(firstNameInput.errors && firstNameInput.errors.required) && firstNameInput.dirty">
         Please provide your first name.
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="m-b-10">
-      <input
-      #lastNameInput="ngModel"
-      type="text"
-      name="lastName"
-      [(ngModel)]="user.lastName"
-      matInput
-      placeholder="Last Name"
-      required>
-      <mat-error *ngIf="(lastNameInput.errors && lastNameInput.errors.required) && lastNameInput.dirty">
-        Please provide your last name.
       </mat-error>
     </mat-form-field>
     <br>
@@ -58,27 +44,12 @@
       #streetInput="ngModel"
       type="text"
       name="street"
-      [(ngModel)]="user.street"
+      [(ngModel)]="user.address"
       matInput
-      placeholder="Street"
+      placeholder="Address"
       required>
       <mat-error *ngIf="(streetInput.errors && streetInput.errors.required) && streetInput.dirty">
-        Please provide valid address.
-      </mat-error>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="m-b-10">
-      <input
-      #townInput="ngModel"
-      type="text"
-      name="town"
-      [(ngModel)]="user.town"
-      matInput
-      placeholder="Town"
-      pattern="^([^,]+),(\s)?([A-Z]{2})$"
-      required>
-      <mat-error *ngIf="(townInput.errors && ( townInput.errors.required || townInput.errors.pattern)) && townInput.dirty">
-        Please provide valid city(e.g Chicago, IL).
+        Please provide valid address (Street, Town, State).
       </mat-error>
     </mat-form-field>
     <br>

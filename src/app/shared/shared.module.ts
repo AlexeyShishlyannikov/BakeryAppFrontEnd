@@ -54,7 +54,6 @@ import { OrderService } from 'shared/services/order.service';
   providers: [
     IngredientService,
     DeliveryService,
-    DataService,
     OrderService,
     PhonePipe
   ]

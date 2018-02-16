@@ -10,7 +10,7 @@ import { UserService } from 'user/services/user.service';
   styleUrls: ['./admin-client-list.component.css']
 })
 export class AdminClientListComponent implements OnDestroy, AfterViewInit {
-  displayedColumns = ['id', 'name', 'phone', 'address'];
+  displayedColumns = ['id', 'email', 'name', 'phone', 'address'];
   users: User[];
   dataSource = new MatTableDataSource(this.users);
   subscription: Subscription;

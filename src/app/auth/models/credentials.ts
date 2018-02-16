@@ -4,10 +4,8 @@ export class LoginCredentials {
 }
 
 export class RegisterCredentials extends LoginCredentials {
-  firstName: string;
-  lastName: string;
-  street: string;
-  town: string;
+  name: string;
+  address: string;
   phone: string;
   zipCode: number;
 }

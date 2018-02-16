@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  API_URL: 'http://SugarCatAppBackend.azurewebsites.net/api',
+  API_URL: 'https://sugarcatwebapi.azurewebsites.net/api',
   firebase: {
     apiKey: 'AIzaSyCrAsIsttQAXo5UTLqIyZ1GpuUyuzmq0WU',
     authDomain: 'sugarcatcart.firebaseapp.com',

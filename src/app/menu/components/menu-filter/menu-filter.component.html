@@ -2,7 +2,8 @@
   *ngFor="let type of types"
   mat-raised-button
   [color]="selected === type ? 'primary': ''"
-  (click)="outputFilter(type)">
-     {{type}}
+  (click)="outputFilter(type)"
+  [textContent]="type === 'All' ? type : type + 's' "
+  >
 </button>
 

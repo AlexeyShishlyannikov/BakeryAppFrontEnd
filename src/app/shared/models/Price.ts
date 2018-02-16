@@ -1,7 +1,7 @@
 export interface Price {
-  cakePricePerPound?: number;
+  cakePricePerPound: number;
   cakePricePerKg?: number;
-  pricePerSet?: PricePerSet[];
+  pricePerSet: PricePerSet[];
 }
 export interface PricePerSet {
   id?: number;

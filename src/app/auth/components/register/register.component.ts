@@ -16,10 +16,8 @@ export class RegisterComponent implements OnInit {
   credentials: RegisterCredentials = {
     email: '',
     password: '',
-    firstName: '',
-    lastName: '',
-    street: '',
-    town: '',
+    name: '',
+    address: '',
     phone: '',
     zipCode: null
   };

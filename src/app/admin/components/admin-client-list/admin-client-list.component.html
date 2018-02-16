@@ -12,9 +12,15 @@
       </ng-container>
 
       <!-- Name Column -->
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
       <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-        <mat-cell *matCellDef="let user"> {{user.firstName + ' ' + user.lastName}} </mat-cell>
+        <mat-header-cell class="flex-1" *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell class="flex-1" *matCellDef="let user"> {{user.name}} </mat-cell>
       </ng-container>
 
       <!-- type Column -->
@@ -25,8 +31,8 @@
 
       <!-- Desc Column -->
       <ng-container matColumnDef="address">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
-        <mat-cell class="no-overflow" *matCellDef="let user"> {{user.street + ' ' + user.town + ' ' + user.zipCode}} </mat-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+        <mat-cell class="no-overflow" *matCellDef="let user"> {{user.address  + ' ' + user.zipCode}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

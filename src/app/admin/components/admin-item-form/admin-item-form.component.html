@@ -8,7 +8,7 @@
     <div class="col">
       <button
       *ngIf="id > 0"
-      class="float-right"
+      class="float-right margin"
       mat-button color="warn"
       (click)="deleteItem()"
       >
@@ -68,8 +68,11 @@
               Description is required.
             </mat-error>
           </mat-form-field>
-          <mat-form-field class="m-b-10">
+          <mat-form-field
+           *ngIf="item.type === 'Cake'"
+          class="m-b-10">
             <input
+            type=number
             #minWeight="ngModel"
             name="minWeight"
             [(ngModel)]="item.minimumWeight"
@@ -90,8 +93,18 @@
           <div class="text-center" *ngIf="item.type === null">
             <h3>Please select type first</h3>
           </div>
-          <mat-form-field class="m-b-10" *ngIf="item.type === 'Cake'">
-            <input #price="ngModel" name="price" [(ngModel)]="item.price.cakePricePerPound" matInput placeholder="Price per pound" required>
+          <mat-form-field
+            class="m-b-10"
+            *ngIf="item.type && item.type === 'Cake'">
+            <input
+            type=number
+            #price="ngModel"
+            name="price"
+            [(ngModel)]="item.price.cakePricePerPound"
+            matInput
+
+            placeholder="Price per pound"
+            required>
             <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
               Price per pound is required.
             </mat-error>
@@ -99,14 +112,22 @@
           <div *ngIf="item.type && item.type !== 'Cake'">
             <div *ngFor="let price of item.price.pricePerSet;let i = index">
               <mat-form-field class=" short-input">
-                <input #size="ngModel" name="setSize{{ i+1 }}" [(ngModel)]="item.price.pricePerSet[i].setSize" matInput placeholder="Size of set {{ i+1 }}"
-                  required>
+                <input
+                type=number
+                #size="ngModel"
+                name="setSize{{ i+1 }}"
+                [(ngModel)]="item.price.pricePerSet[i].setSize"
+                matInput
+                placeholder="Size of set {{ i+1 }}"
+                required>
                 <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
                   Define set size.
                 </mat-error>
               </mat-form-field>
               <mat-form-field class="short-input">
-                <input #price="ngModel" name="setPrice{{ i+1 }}" [(ngModel)]="item.price.pricePerSet[i].setPrice" matInput placeholder="Price for set {{ i+1 }}"
+                <input
+                type=number
+                #price="ngModel" name="setPrice{{ i+1 }}" [(ngModel)]="item.price.pricePerSet[i].setPrice" matInput placeholder="Price for set {{ i+1 }}"
                   required>
                 <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
                   Define set price.
