@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 class="text-center margin">Frequently Asked Questions:</h1>
+  <div
+  *ngFor="let q of this.questions;let i = index"
+  class="row m-20">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <mat-card>
+        <mat-card-title>
+            {{ q.question }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          <p>Question #{{ i+1 }}</p>
+        </mat-card-subtitle>
+        <!-- <mat-divider [inset]="true"></mat-divider> -->
+        <mat-card-content>
+          <h4>
+            {{ q.answer }}
+          </h4>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <app-progress-bar></app-progress-bar>
+</div>

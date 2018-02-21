@@ -60,3 +60,10 @@
   top: 80%;
   color: red;
 }
+@media (max-width: 600px) {
+  .image-container{
+    width: calc(100% + 32px);
+    margin: -16px -16px 0px -16px;
+    padding: 0;
+  }
+}

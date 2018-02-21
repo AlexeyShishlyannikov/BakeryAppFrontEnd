@@ -2,8 +2,8 @@
   <h1 class="spread-text">Our organic ingredients</h1>
 </div>
 <div class="row">
-  <div class="col-sm-6">
-    <mat-card *ngFor="let i of ingredients" class="m-20">
+  <div *ngFor="let i of ingredients" class="col-sm-6">
+    <mat-card class="m-20">
       <mat-card-title>
         <h2>
           {{ i.name }}

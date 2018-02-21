@@ -18,6 +18,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { CartModule } from './cart/cart.module';
+import { BrowserXhr } from '@angular/http';
+import { BrowserXhrWithProgress } from 'shared/services/progress.service';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,9 @@ import { CartModule } from './cart/cart.module';
     ]),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
+  ],
+  providers: [
+    { provide: BrowserXhr, useClass: BrowserXhrWithProgress }
   ],
   bootstrap: [AppComponent]
 })

@@ -16,6 +16,7 @@ import {
   MatSortModule,
   MatSelectModule,
   MatCheckboxModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 
 @NgModule({
@@ -35,7 +36,8 @@ import {
     MatTableModule,
     MatSortModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatToolbarModule,
@@ -53,7 +55,8 @@ import {
     MatTableModule,
     MatSortModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   declarations: [],
   providers: [],

@@ -1,3 +1,42 @@
-<p>
-  admin-ingredient-form works!
-</p>
+<div class="container">
+  <form novalidate #f="ngForm">
+    <div class="row">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
+        <mat-card class="m-20 text-center">
+          <mat-card-header>
+            <h2>How good is it?</h2>
+          </mat-card-header>
+          <mat-form-field class="m-b-10">
+            <input #nameInput="ngModel" type="text" name="name" [(ngModel)]="this.ingredient.name" matInput placeholder="Name" required>
+            <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
+              Name is required.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="m-b-10">
+            <textarea
+            #descInput="ngModel"
+            type="text"
+            name="desc"
+            [(ngModel)]="this.ingredient.description"
+            matInput
+            matTextareaAutosize
+            matAutosizeMinRows="2"
+            matAutosizeMaxRows="10"
+            placeholder="Description"
+            required>
+            </textarea>
+          <mat-error *ngIf="(nameInput.errors && nameInput.errors.required) && nameInput.dirty">
+            Description is required.
+          </mat-error>
+        </mat-form-field>
+        </mat-card>
+      </div>
+    </div>
+    <div class="text-center m-20">
+      <button color="primary" [disabled]="f.invalid" (click)="submit()" mat-raised-button>
+        {{ id > 0 ? 'SAVE' : 'SUBMIT' }}
+      </button>
+    </div>
+  </form>
+</div>

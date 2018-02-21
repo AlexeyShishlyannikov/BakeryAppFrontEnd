@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { MenuItem } from '../../../shared/models/menuItem';
 import { Subscription } from 'rxjs/Subscription';
+import { ProgressService } from '../../../shared/services/progress.service';
 
 @Component({
   selector: 'app-menu-list',
@@ -15,7 +16,7 @@ export class MenuListComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   weightToggle = true;
   constructor(
-    private menuService: MenuService
+    private menuService: MenuService,
   ) { }
 
   ngOnInit() {

@@ -1,14 +1,33 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row class="mat-elevation-z6">
-    <button routerLink="/" mat-button>
-      Home
-    </button>
-    <button routerLink="/menu" mat-button>
-      Menu
-    </button>
-    <button (click)="openDeliveryDialog()" mat-button>
-      <mat-icon>local_shipping</mat-icon> Delivery Quote
-    </button>
+    <div *ngIf="!this.matchMedia">
+      <button routerLink="/" mat-button>
+        Home
+      </button>
+      <button routerLink="/menu" mat-button>
+        Menu
+      </button>
+      <button routerLink="/faq" mat-button>
+        FAQ
+      </button>
+      <button (click)="openDeliveryDialog()" mat-button>
+        <mat-icon>local_shipping</mat-icon> Delivery Quote
+      </button>
+    </div>
+    <div *ngIf="this.matchMedia">
+      <mat-menu #mediaMenu="matMenu">
+        <button routerLink="/" mat-menu-item>
+          Home
+        </button>
+        <button routerLink="/menu" mat-menu-item>
+          Menu
+        </button>
+      </mat-menu>
+
+      <button mat-button [matMenuTriggerFor]="mediaMenu">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
     <span class="spacer"></span>
     <div *ngIf="!authService.isLoggedIn()">
       <button
@@ -24,7 +43,7 @@
       <mat-menu #appMenu="matMenu">
         <button routerLink="admin/menu" mat-menu-item>Menu</button>
         <button routerLink="admin/ingredients" mat-menu-item>Ingredients</button>
-        <button mat-menu-item>FAQ</button>
+        <button routerLink="admin/faq" mat-menu-item>FAQ</button>
         <button
         routerLink="admin/clients"
         mat-menu-item>Clients</button>
@@ -45,7 +64,7 @@
       [routerLink]="['/user/', authService.currentUserId]">
         <span>
           <mat-icon class="">account_circle</mat-icon>
-          {{ authService.currentUserEmail }}
+          <span *ngIf="!this.matchMedia">{{ authService.currentUserEmail }}</span>
         </span>
       </button>
       <button (click)="authService.logout()"
@@ -54,6 +73,16 @@
       </button>
     </div>
 
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="this.matchMedia">
+    <button (click)="openDeliveryDialog()" mat-button>
+      <mat-icon>local_shipping</mat-icon>
+      Delivery Quote
+    </button>
+    <button routerLink="/faq" mat-button>
+      <mat-icon>question_answer</mat-icon>
+      FAQ
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
 
