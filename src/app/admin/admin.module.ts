@@ -13,6 +13,7 @@ import { AdminOrderListComponent } from './components/admin-order-list/admin-ord
 import { AdminIngredientListComponent } from './components/admin-ingredient-list/admin-ingredient-list.component';
 import { AdminIngredientFormComponent } from './components/admin-ingredient-form/admin-ingredient-form.component';
 import { AdminFaqListsComponent } from './components/admin-faq-lists/admin-faq-lists.component';
+import { AdminContactsComponent } from './components/admin-contacts/admin-contacts.component';
 
 @NgModule({
   imports: [
@@ -53,6 +54,11 @@ import { AdminFaqListsComponent } from './components/admin-faq-lists/admin-faq-l
         component: AdminFaqListsComponent,
         canActivate: [AuthGuard, AdminGuard]
       },
+      {
+        path: 'admin/contacts',
+        component: AdminContactsComponent,
+        canActivate: [AuthGuard, AdminGuard]
+      },
     ])
   ],
   declarations: [
@@ -63,7 +69,8 @@ import { AdminFaqListsComponent } from './components/admin-faq-lists/admin-faq-l
     AdminOrderListComponent,
     AdminIngredientListComponent,
     AdminIngredientFormComponent,
-    AdminFaqListsComponent
+    AdminFaqListsComponent,
+    AdminContactsComponent
   ],
   providers: [
     AdminGuard,

@@ -5,6 +5,7 @@ import { SharedModule } from 'shared/shared.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { InstagramService } from './services/instagram.service';
+import { AppearDirective } from '../helpers/appeared-once';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { InstagramService } from './services/instagram.service';
   ],
   declarations: [
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    AppearDirective
   ],
   exports: [
     HomeComponent,

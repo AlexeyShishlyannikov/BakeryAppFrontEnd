@@ -1,18 +1,19 @@
-<div class="">
+<div class="no-overflow">
   <div class="text-center m-20">
     <app-menu-filter (selectedType)="filterMenu($event)"></app-menu-filter>
   </div>
   <div *ngIf="weightToggle" class="text-center m-20">
     <app-menu-switch-weight (isMetric)="switchWeight($event)">
-
     </app-menu-switch-weight>
   </div>
-  <div class="container">
-    <app-progress-bar></app-progress-bar>
-    <div class="row">
+  <div  class="container">
+    <app-progress-bar (isDone)="changeStatus($event)"></app-progress-bar>
+    <div [@animateAll]="isLoaded" *ngIf="menuFiltered.length > 0 && isLoaded" class="row" >
       <div
         *ngFor="let item of menuFiltered"
-        class="col-sm-6 col-xs-12 m-20">
+        class="col-sm-6 col-xs-12 m-20"
+         [@slideLeft]="isLoaded"
+        >
         <app-menu-list-item
           [menuItem]="item"
           [isMetric]="isMetric">

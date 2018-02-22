@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { CartModule } from './cart/cart.module';
 import { BrowserXhr } from '@angular/http';
 import { BrowserXhrWithProgress } from 'shared/services/progress.service';
+import { ContactsModule } from './contacts/contacts.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { BrowserXhrWithProgress } from 'shared/services/progress.service';
     MenuModule,
     UserModule,
     CartModule,
+    ContactsModule,
     RouterModule.forRoot(<Routes>[
       {
         path: '',

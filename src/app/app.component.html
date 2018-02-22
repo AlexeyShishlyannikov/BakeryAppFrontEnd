@@ -1,2 +1,25 @@
-<app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<mat-sidenav-container class="example-container" (backdropClick)="close()">
+  <mat-sidenav #sidenav (keydown.escape)="close()" disableClose>
+    <p class="margin-top">
+      <button mat-button (click)="close()" routerLink="/">
+        Home
+      </button>
+    </p>
+    <p>
+      <button mat-button (click)="close()" routerLink="/menu">
+        Our Menu
+      </button>
+    </p>
+    <p>
+      <button (click)="openContactsDialog()" mat-button>
+        <mat-icon>phone</mat-icon>
+        Contacts
+      </button>
+    </p>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-navbar (toggleSidenav)="open()"></app-navbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

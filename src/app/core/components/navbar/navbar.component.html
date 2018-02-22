@@ -5,27 +5,24 @@
         Home
       </button>
       <button routerLink="/menu" mat-button>
-        Menu
+        <mat-icon>cake</mat-icon>
+        Our Menu
       </button>
       <button routerLink="/faq" mat-button>
+        <mat-icon>question_answer</mat-icon>
         FAQ
       </button>
       <button (click)="openDeliveryDialog()" mat-button>
         <mat-icon>local_shipping</mat-icon> Delivery Quote
       </button>
+      <button (click)="openContactsDialog()" mat-button>
+        <mat-icon>phone</mat-icon>
+        Contacts
+      </button>
     </div>
     <div *ngIf="this.matchMedia">
-      <mat-menu #mediaMenu="matMenu">
-        <button routerLink="/" mat-menu-item>
-          Home
-        </button>
-        <button routerLink="/menu" mat-menu-item>
-          Menu
-        </button>
-      </mat-menu>
-
-      <button mat-button [matMenuTriggerFor]="mediaMenu">
-        <mat-icon>menu</mat-icon>
+      <button mat-icon-button (click)="openSidenav()">
+        <mat-icon class="menu">menu</mat-icon>
       </button>
     </div>
     <span class="spacer"></span>
@@ -47,6 +44,7 @@
         <button
         routerLink="admin/clients"
         mat-menu-item>Clients</button>
+        <button routerLink="admin/contacts" mat-menu-item>Contacts</button>
         <button
         mat-menu-item
         routerLink="admin/orders"

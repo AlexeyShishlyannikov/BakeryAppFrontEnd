@@ -1,39 +1,31 @@
-<div class="container1">
-  <mat-grid-list cols="2" [rowHeight]="!matchMedia ? '1:1' : '2:1'">
-    <mat-grid-tile class="image" [style.background-image]="'url(../../assets/img10.jpeg)'">
-      <h1>Cupcakes</h1>
-    </mat-grid-tile>
-    <mat-grid-tile class="image" [style.background-image]="'url(\'../../assets/img14.jpeg\')'">
-      <h1>Macarons</h1>
-    </mat-grid-tile>
-    <mat-grid-tile class="image" [style.background-image]="'url(\'../../assets/img5.jpeg\')'">
-      <h1>Custom Cakes</h1>
-    </mat-grid-tile>
-    <mat-grid-tile class="image" [style.background-image]="'url(\'../../assets/img4.jpeg\')'">
-      <h1>Call us!</h1>
-    </mat-grid-tile>
-    <mat-grid-tile class="image" [style.background-image]="'url(\'../../assets/img44.jpeg\')'">
-      <img src="" alt="">
-    </mat-grid-tile>
-    <mat-grid-tile class="image" [style.background-image]="'url(\'../../assets/img33.jpeg\')'">
-    </mat-grid-tile>
-    <!-- <div class="absolute">
-      <div class="container">
-        <mat-card class="m-20">
-          <mat-card-header>
-            <h2 class="text-center">Our Instagram</h2>
-          </mat-card-header>
-          <mat-card-content>
-            <div class="row">
-              <div class="col-sm-3 col-6 m-20" *ngFor="let posting of instagramData">
-                <a href="{{ posting.link }}" target="_blank">
-                  <img [src]="posting.images.low_resolution.url" alt="">
-                </a>
-              </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </div> -->
-  </mat-grid-list>
+<div [@animateAll] class="home-wrap">
+  <div class="text-center">
+    <h1 class="title">Welcome</h1>
+  </div>
+  <div class="row">
+    <div [@slideRightTop] class="col-sm-6 align-self-center text-center order-sm-1 order-xs-2">
+      <img class="mat-elevation-z9 right" src="../../../../assets/img0.jpeg" alt="">
+    </div>
+    <div [@slideLeft] class="margin-text text-center col-sm-6 order-sm-2 order-xs-1 align-self-center">
+      <h2>Any holiday and any celebration is better with our custom made cakes!</h2>
+      <h2>Let us help you bring a very special gift your close ones have been waiting for!</h2>
+      <h2></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div [@slideLeftTop] class="col-sm-6 order-sm-2 order-xs-1 align-self-center  text-center">
+      <img class="mat-elevation-z9 left" src="../../../../assets/img1.jpeg" alt="">
+    </div>
+    <div [@slideRight] class="margin-text text-center order-sm-1 order-xs-2 col-sm-6 align-self-center">
+      <h2>All of our products are made from organic ingridients.</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div [@slideRightTop] class="col-sm-6 align-self-center text-center order-sm-1 order-xs-2">
+      <img class="mat-elevation-z9 right" src="../../../../assets/img2.jpeg" alt="">
+    </div>
+    <div [@slideLeft] class="margin-text text-center col-sm-6 order-sm-2 order-xs-1 align-self-center">
+      <h2>Our main goal is to help you create an unforgettable sweet memory.</h2>
+    </div>
+  </div>
 </div>

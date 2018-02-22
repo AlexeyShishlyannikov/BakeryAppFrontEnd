@@ -1,0 +1,52 @@
+<form novalidate #f="ngForm" class="container">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <mat-card class="m-20 text-center">
+        <mat-card-header>
+          <h2>Edit contacts</h2>
+        </mat-card-header>
+        <mat-form-field class="m-b-10">
+          <input #phoneInput="ngModel" type="text" name="phone" [(ngModel)]="this.contacts.phone" matInput placeholder="Phone"
+            required>
+          <mat-error *ngIf="(phoneInput.errors && phoneInput.errors.required) && phoneInput.dirty">
+            phone is required.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="m-b-10">
+          <input
+            #addressInput="ngModel" type="text" name="address" [(ngModel)]="this.contacts.address" matInput placeholder="Address" required>
+          <mat-error *ngIf="(addressInput.errors && addressInput.errors.required) && addressInput.dirty">
+            Address is required.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="m-b-10">
+          <input #emailInput="ngModel" type="text" name="email" [(ngModel)]="this.contacts.email" matInput placeholder="email"
+            required>
+          <mat-error *ngIf="(emailInput.errors && emailInput.errors.required) && emailInput.dirty">
+            Email is required.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="m-b-10">
+          <input #instagramInput="ngModel" type="text" name="instagram" [(ngModel)]="this.contacts.instagram" matInput placeholder="Instagram"
+            required>
+          <mat-error *ngIf="(instagramInput.errors && instagramInput.errors.required) && instagramInput.dirty">
+            Instagram is required.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="m-b-10">
+          <input #facebookInput="ngModel" type="text" name="facebook" [(ngModel)]="this.contacts.facebook" matInput placeholder="Facebook"
+            required>
+          <mat-error *ngIf="(facebookInput.errors && facebookInput.errors.required) && facebookInput.dirty">
+           Facebook is required.
+          </mat-error>
+        </mat-form-field>
+      </mat-card>
+    </div>
+  </div>
+  <div class="text-center m-20">
+    <button color="primary" [disabled]="f.invalid" (click)="submit()" mat-raised-button>
+      SAVE
+    </button>
+  </div>
+</form>

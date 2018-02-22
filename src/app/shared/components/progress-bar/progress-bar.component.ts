@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ProgressService } from 'shared/services/progress.service';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class ProgressBarComponent implements OnInit, OnDestroy {
   loadStatus: boolean;
   loadSub: Subscription;
+  @Output() isDone: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor(
     private progressService: ProgressService
   ) { }
@@ -18,7 +19,9 @@ export class ProgressBarComponent implements OnInit, OnDestroy {
     this.loadSub = this.progressService.downloadProgress
       .subscribe(progress => {
           this.loadStatus = progress.isDone;
-          console.log(progress);
+          if (progress.isDone) {
+            this.isDone.emit(true);
+          }
       });
   }
   ngOnDestroy() {
