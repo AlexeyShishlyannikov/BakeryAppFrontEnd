@@ -18,5 +18,5 @@
   [(ngModel)]="input"
   maxlength="4"
   (keyup)="calcPrice(weight.value)"
-  placeholder="Min weight is {{ menuItemService.getMinimumWeight(item, isMetric) }}">
+  placeholder="Min weight is {{ menuItemService.getMinimumWeight(item, isMetric) }} {{ isMetric ? 'kg' : 'lb' }}">
 </mat-form-field>

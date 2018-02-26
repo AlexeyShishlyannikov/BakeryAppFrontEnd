@@ -18,7 +18,7 @@
         {{ item.description }}
       </p>
       <p *ngIf="item.type == 'Cake'" class="weight">
-        Minimum Weight: {{ menuItemService.getMinimumWeight(item, isMetric) }}
+        Minimum Weight: {{ menuItemService.getMinimumWeight(item, isMetric) | number}} {{ isMetric ? 'kg' : 'lb' }}
       </p>
     </mat-card-content>
   </mat-card>
