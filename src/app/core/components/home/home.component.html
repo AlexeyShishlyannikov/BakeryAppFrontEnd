@@ -1,31 +1,65 @@
-<div [@animateAll] class="home-wrap">
-  <div class="text-center">
-    <h1 class="title">Welcome</h1>
+<div class="home-wrap">
+  <div class="pos-rel">
+    <ngx-carousel [inputs]="carouselOne" (carouselLoad)="myfunc($event)">
+      <ngx-item NgxCarouselItem>
+        <img src="../../../../assets/prof1.jpg" alt="">
+      </ngx-item>
+      <ngx-item NgxCarouselItem>
+        <img src="../../../../assets/prof2.jpg" alt="">
+      </ngx-item>
+      <ngx-item NgxCarouselItem>
+        <img src="../../../../assets/prof3.jpg" alt="">
+      </ngx-item>
+      <ngx-item NgxCarouselItem>
+        <img src="../../../../assets/prof5.jpg" alt="">
+      </ngx-item>
+      <ngx-item NgxCarouselItem>
+        <img src="../../../../assets/prof6.jpg" alt="">
+      </ngx-item>
+      <ngx-item NgxCarouselItem>
+        <img src="../../../../assets/prof7.jpg" alt="">
+      </ngx-item>
+      <ngx-item NgxCarouselItem>
+        <img src="../../../../assets/prof8.jpg" alt="">
+      </ngx-item>
+      <ngx-item NgxCarouselItem>
+        <img src="../../../../assets/prof4.jpg" alt="">
+      </ngx-item>
+      <mat-icon NgxCarouselPrev class="leftRs c-button">keyboard_arrow_left</mat-icon>
+      <mat-icon NgxCarouselNext class="rightRs c-button">keyboard_arrow_right</mat-icon>
+    </ngx-carousel>
+    <div class="c-about">
+      <h1>Sugar Cat Chicago</h1>
+      <h5>We are glad to welcome you at our comfy sweet-shop, where everything is made with love and passion</h5>
+    </div>
   </div>
-  <div class="row">
-    <div [@slideRightTop] class="col-sm-6 align-self-center text-center order-sm-1 order-xs-2">
-      <img class="mat-elevation-z9 right" src="assets/img0.jpeg" alt="">
+  <br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 align-self-center text-center order-sm-1 order-xs-2">
+        <img class="mat-elevation-z9 right des-img" src="assets/img0.jpeg" alt="">
+      </div>
+      <div class="margin-text text-center col-sm-6 order-sm-2 order-xs-1 align-self-center">
+        <h2>Any holiday and any celebration is better with our custom made cakes!</h2>
+        <h2>Let us help you bring a very special gift your close ones have been waiting for!</h2>
+      </div>
     </div>
-    <div [@slideLeft] class="margin-text text-center col-sm-6 order-sm-2 order-xs-1 align-self-center">
-      <h2>Any holiday and any celebration is better with our custom made cakes!</h2>
-      <h2>Let us help you bring a very special gift your close ones have been waiting for!</h2>
-      <h2></h2>
+    <div class="row">
+      <div class="col-sm-6 order-sm-2 order-xs-1 align-self-center  text-center">
+        <img class="mat-elevation-z9 left des-img" src="assets/img1.jpeg" alt="">
+      </div>
+      <div class="margin-text text-center order-sm-1 order-xs-2 col-sm-6 align-self-center">
+        <h2>All of our products are made from organic ingridients.</h2>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div [@slideLeftTop] class="col-sm-6 order-sm-2 order-xs-1 align-self-center  text-center">
-      <img class="mat-elevation-z9 left" src="assets/img1.jpeg" alt="">
-    </div>
-    <div [@slideRight] class="margin-text text-center order-sm-1 order-xs-2 col-sm-6 align-self-center">
-      <h2>All of our products are made from organic ingridients.</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div [@slideRightTop] class="col-sm-6 align-self-center text-center order-sm-1 order-xs-2">
-      <img class="mat-elevation-z9 right" src="assets/img2.jpeg" alt="">
-    </div>
-    <div [@slideLeft] class="margin-text text-center col-sm-6 order-sm-2 order-xs-1 align-self-center">
-      <h2>Our main goal is to help you create an unforgettable sweet memory.</h2>
+    <div class="row">
+      <div class="col-sm-6 align-self-center text-center order-sm-1 order-xs-2">
+        <img class="mat-elevation-z9 right des-img" src="assets/img2.jpeg" alt="">
+      </div>
+      <div class="margin-text text-center col-sm-6 order-sm-2 order-xs-1 align-self-center">
+        <h2>Our main goal is to help you create an unforgettable sweet memory.</h2>
+      </div>
     </div>
   </div>
 </div>
+<app-footer></app-footer>

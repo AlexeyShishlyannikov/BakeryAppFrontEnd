@@ -1,12 +1,14 @@
-import { Component, Input, OnInit, IterableDiffers, DoCheck, Output, EventEmitter } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Component, DoCheck, EventEmitter, Input, IterableDiffers, OnInit, Output } from '@angular/core';
 
 import { Photo } from '../../models/Photo';
+import { animations } from '../../../menu/components/menu-list/menu-list.animations';
+import { slidingEffects } from 'shared/components/photo-carousel/photo-carousel.animations';
 
 @Component({
   selector: 'app-photo-carousel',
   templateUrl: './photo-carousel.component.html',
-  styleUrls: ['./photo-carousel.component.css']
+  styleUrls: ['./photo-carousel.component.css'],
+  animations: slidingEffects
 })
 export class PhotoCarouselComponent implements OnInit, DoCheck {
   @Input('photos') photos: Photo[] = [];
@@ -15,6 +17,7 @@ export class PhotoCarouselComponent implements OnInit, DoCheck {
   stringPhotos: string[] = [];
   private iterableDiffer: any;
   selectedPhoto = 0;
+  animationState = 'left';
 
   constructor(private _iterableDiffers: IterableDiffers) {
     this.iterableDiffer = this._iterableDiffers.find([]).create(null);

@@ -6,16 +6,21 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { InstagramService } from './services/instagram.service';
 import { AppearDirective } from '../helpers/appeared-once';
+import { NgxCarouselModule } from 'ngx-carousel';
+import 'hammerjs';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   imports: [
     SharedModule,
+    NgxCarouselModule,
     RouterModule.forChild([])
   ],
   declarations: [
     HomeComponent,
     NavbarComponent,
-    AppearDirective
+    AppearDirective,
+    FooterComponent
   ],
   exports: [
     HomeComponent,

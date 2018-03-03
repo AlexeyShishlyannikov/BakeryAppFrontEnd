@@ -1,0 +1,37 @@
+.footer-wrap{
+  overflow: hidden;
+  margin: 20px auto;
+}
+.title-border {
+  border-bottom: 5px solid #333;
+  width: 150px;
+  margin: auto;
+  margin-bottom: 25px;
+}
+mat-icon{
+  font-size: 70px;
+}
+.info-unit{
+  margin-bottom: 30px;
+  font-weight: 100;
+}
+.cust-text{
+  width: 100%;
+}
+.brush{
+  font-size: 100%;
+  transform: scale(1.75);
+  padding-right: 30px;
+}
+.w-2{
+  width: 200px;
+}
+h2{
+  font-weight: 300;
+}
+@media (max-width: 768px) {
+  mat-icon{
+   font-size: 60px;
+  }
+
+}
