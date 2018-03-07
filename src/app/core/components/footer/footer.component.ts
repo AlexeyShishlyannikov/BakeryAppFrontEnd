@@ -8,14 +8,14 @@ import { Contacts } from '../../../contacts/models/contacts.model';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  public contacts: Contacts;
+  public phoneNumber = null;
   constructor(
     private contactsService: ContactsService
   ) { }
 
   ngOnInit() {
     this.contactsService.getContacts().subscribe(res => {
-      this.contacts = res;
+      this.phoneNumber = res.phone;
     });
   }
 
